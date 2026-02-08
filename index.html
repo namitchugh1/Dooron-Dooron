@@ -63,6 +63,7 @@
             padding: 20px; z-index: 102; animation: fadeIn 2s ease-in;
         }
 
+        /* --- BUTTONS & CTAs --- */
         .enter-btn {
             margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; z-index: 102;
@@ -70,36 +71,49 @@
             text-align: center; max-width: 80%;
         }
 
-        .shake-btn { animation: shake 1.5s infinite ease-in-out; }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        .pop-cta {
+            margin-top: 25px; cursor: pointer; z-index: 102;
+            display: flex; flex-direction: column; align-items: center;
+            transition: transform 0.3s ease;
+            animation: popPulse 2s infinite ease-in-out;
+        }
+
+        .pop-icon { font-size: 3rem; margin-bottom: 5px; }
+        .pop-label {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--deep-pink); padding: 10px 20px;
+            border-radius: 50px; font-size: 0.9rem; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;
+            max-width: 250px;
+        }
+
+        @keyframes popPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
         }
 
         /* --- ROMANTIC FLOW --- */
         #main-content {
             height: 100%; width: 100%; display: none;
             justify-content: center; align-items: center;
-            opacity: 0; 
-            transition: opacity 3s ease-in-out; 
+            opacity: 0; transition: opacity 3s ease-in-out; 
             background-size: cover; background-position: center;
         }
 
         .bg-about-you { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('about_you.jpeg'); }
-        .bg-lavie { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('la_vie_en_rose.jpeg'); }
+        .bg-lavie { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('la_vie_en_rose.jpeg'); }
+        .bg-sexy { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('hey_sexy_lady.jpeg'); }
         .bg-shoulder { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('put_your_head_on_my_shoulder.jpeg'); }
 
         .romantic-screen {
             position: absolute; width: 90%; max-width: 350px;
             transition: all 1s ease; 
-            display: flex; flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* Positionings */
-        #screen-4 { top: 40px; right: 20px; }
-        #screen-5 { top: 40px; right: 20px; } 
+        /* Positions */
+        #screen-4, #screen-5 { top: 40px; right: 20px; } 
+        #screen-sexy { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* Center for impact */
         #screen-6 { bottom: 40px; right: 20px; }
 
         .screen-hidden { opacity: 0; pointer-events: none; display: none !important; }
@@ -125,9 +139,7 @@
             margin-bottom: 5px;
         }
 
-        /* Soft glow for the Rose Icon */
         .rose-glow { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)); }
-
         .cta-label { font-size: 0.85rem; font-weight: bold; font-style: italic; text-shadow: 2px 2px 5px black; }
 
         @keyframes heartbeat {
@@ -158,7 +170,10 @@
     <div id="screen-2" class="full-screen remove-me">
         <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
         <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
-        <button class="enter-btn shake-btn" onclick="goToBridge()">maaf kardiya toh yaha click karo, dusro koi option nahi hai</button>
+        <div class="pop-cta" onclick="goToBridge()">
+            <span class="pop-icon">🙏</span>
+            <span class="pop-label">maaf kardiya toh yaha click karo, dusro koi option nahi hai</span>
+        </div>
     </div>
 
     <div id="screen-3" class="full-screen remove-me">
@@ -183,9 +198,19 @@
             <div class="middle-text">
                 When I am with you, life really does feel like la vie en rose - like the whole world is warmer and brighter
             </div>
-            <div class="love-cta" onclick="showFinalScreen()">
+            <div class="love-cta" onclick="showSexy()">
                 <span class="love-symbol rose-glow">🌹</span>
                 <span class="cta-label">Hold my hand and lets go ahead together</span>
+            </div>
+        </div>
+
+        <div id="screen-sexy" class="romantic-screen screen-hidden">
+            <div class="middle-text">
+                hey sexy lady you have taken my heart, please give it back
+            </div>
+            <div class="love-cta" onclick="showFinalScreen()">
+                <span class="love-symbol">❤️‍🔥</span>
+                <span class="cta-label">click here to give it back</span>
             </div>
         </div>
 
@@ -204,12 +229,24 @@
 
     <audio id="music-ganpat" src="ganpat.mp3" preload="auto"></audio>
     <audio id="music-romantic" src="about_you.mp3" loop preload="auto"></audio>
-    <audio id="music-lavie" src="la_vie_en_rose.mp3" loop preload="auto"></audio>
+    <audio id="music-lavie" src="la_vie_en_rose.mp3" preload="auto"></audio>
+    <audio id="music-sexy" src="hey_sexy_lady.mp3" preload="auto"></audio>
 
     <script>
         const mGanpat = document.getElementById('music-ganpat');
         const mRomantic = document.getElementById('music-romantic');
         const mLavie = document.getElementById('music-lavie');
+        const mSexy = document.getElementById('music-sexy');
+
+        // Custom Loop for La Vie En Rose
+        mLavie.addEventListener('timeupdate', function() {
+            if (this.currentTime >= 102) { this.currentTime = 9; }
+        });
+
+        // Custom Loop for Hey Sexy Lady: 39s to 95s (1m 35s)
+        mSexy.addEventListener('timeupdate', function() {
+            if (this.currentTime >= 95) { this.currentTime = 39; }
+        });
 
         function createSkulls() {
             const container = document.getElementById('skull-container');
@@ -251,13 +288,12 @@
                 main.style.display = 'flex';
                 setTimeout(() => { main.style.opacity = '1'; }, 100);
                 mRomantic.currentTime = 83; mRomantic.volume = 0.7; mRomantic.play();
-                createPetals('main-content');
             }, 800);
         }
 
         function showLaVie() {
             mRomantic.pause();
-            mLavie.play();
+            mLavie.currentTime = 9; mLavie.play();
             const main = document.getElementById('main-content');
             main.classList.remove('bg-about-you');
             main.classList.add('bg-lavie');
@@ -265,11 +301,23 @@
             document.getElementById('screen-5').classList.remove('screen-hidden');
         }
 
-        function showFinalScreen() {
+        function showSexy() {
+            mLavie.pause();
+            mSexy.currentTime = 39; mSexy.play();
             const main = document.getElementById('main-content');
             main.classList.remove('bg-lavie');
-            main.classList.add('bg-shoulder');
+            main.classList.add('bg-sexy');
             document.getElementById('screen-5').classList.add('screen-hidden');
+            document.getElementById('screen-sexy').classList.remove('screen-hidden');
+        }
+
+        function showFinalScreen() {
+            mSexy.pause();
+            // Optional: restart mRomantic or keep it quiet for final message
+            const main = document.getElementById('main-content');
+            main.classList.remove('bg-sexy');
+            main.classList.add('bg-shoulder');
+            document.getElementById('screen-sexy').classList.add('screen-hidden');
             document.getElementById('screen-6').classList.remove('screen-hidden');
         }
 

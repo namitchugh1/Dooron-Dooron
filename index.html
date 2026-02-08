@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For Tanu ❤️</title>
+    <title>Surprise for Tanu ❤️</title>
     <style>
         :root {
-            --pink-bg: #fad0c4;
             --deep-pink: #ff4d6d;
         }
 
@@ -31,13 +30,13 @@
         }
 
         .warning-text {
-            color: #ff4d6d; font-size: 1.3rem; margin-top: 25px;
+            color: var(--deep-pink); font-size: 1.3rem; margin-top: 25px;
             font-weight: bold; text-align: center; z-index: 102;
             text-transform: uppercase; letter-spacing: 1px; padding: 0 15px;
         }
 
         .enter-btn {
-            margin-top: 30px; padding: 15px 35px; background: #ff4d6d;
+            margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 5px;
             font-weight: bold; cursor: pointer; font-size: 1rem; z-index: 102;
         }
@@ -50,57 +49,47 @@
         /* --- ROMANTIC FLOW --- */
         #main-content {
             height: 100%; width: 100%;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 1.5s ease;
-        }
-
-        /* Specific Background for Page 1 & 2 */
-        .bg-about-you {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('about_you.jpeg');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('about_you.jpeg');
             background-size: cover;
             background-position: center;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 1.5s ease;
         }
 
         .screen {
             position: absolute; width: 90%; max-width: 500px;
             text-align: center; transition: all 0.8s ease;
             display: flex; flex-direction: column; align-items: center;
-            z-index: 10;
         }
 
         .hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
 
-        .top-text { font-size: 1rem; color: white; margin-bottom: 25px; font-style: italic; text-shadow: 1px 1px 5px black; }
-        
         .middle-text { 
             font-size: 1.4rem; color: white; font-weight: bold; 
-            background: rgba(255, 77, 109, 0.6); padding: 30px; 
+            background: rgba(255, 77, 109, 0.7); padding: 30px; 
             border-radius: 30px; backdrop-filter: blur(8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); line-height: 1.5;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.5;
         }
 
-        .arrow-box { margin-top: 30px; cursor: pointer; color: white; }
+        /* Screen 2: Photos Layout */
+        .primary-img { width: 280px; border-radius: 15px; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .shoot-text { color: white; font-weight: bold; margin: 20px 0; text-shadow: 2px 2px 8px black; font-size: 1.2rem; }
+        .small-billa { width: 70px; border-radius: 10px; border: 2px solid white; }
+
+        .arrow-box { margin-top: 30px; cursor: pointer; color: white; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
         .arrow { font-size: 3rem; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
 
-        /* Screen 3: Don't Shoot Me Styles */
-        .dont-shoot-img { width: 280px; border-radius: 15px; border: 5px solid white; margin-bottom: 15px; }
-        .billa-img { width: 80px; border-radius: 50%; margin-top: 10px; }
-
         .gmeet-btn {
-            text-decoration: none; padding: 18px 45px; background: #ff4d6d;
+            text-decoration: none; padding: 18px 45px; background: var(--deep-pink);
             color: white; border-radius: 50px; font-weight: bold;
             box-shadow: 0 5px 20px rgba(255,77,109,0.4);
-            animation: pulse 2s infinite; display: inline-block; margin-top: 20px;
+            animation: pulse 2s infinite; display: inline-block;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
         .petal {
-            position: absolute; background-color: #ff4d6d;
+            position: absolute; background-color: var(--deep-pink);
             border-radius: 150% 0 150% 0; opacity: 0.6;
             pointer-events: none; animation: fall linear infinite; z-index: 5;
         }
@@ -119,25 +108,22 @@
         <button class="enter-btn" onclick="startExperience()">sorry jaan, open to karo</button>
     </div>
 
-    <div id="main-content" class="bg-about-you">
+    <div id="main-content">
         <div id="screen1" class="screen">
-            <p class="top-text">a little late but i hope I am worth the wait</p>
+            <p style="color:white; font-style:italic; margin-bottom:20px;">a little late but i hope I am worth the wait</p>
             <p class="middle-text">
                 Lagta hai hamari khamoshi ko tum berukhi samjh baithi, <br><br>
                 tum kya jano hum toh aaj bhi tumhare intezaar mein har lamahaan guzaar rahe hain.
             </p>
             <div class="arrow-box" onclick="showScreen(2)">
-                <p style="color: #eee; font-size: 0.9rem; margin-bottom: 5px;">ageh bado jaanu</p>
                 <div class="arrow">➔</div>
             </div>
         </div>
 
         <div id="screen2" class="screen hidden">
-            <img src="dont_shoot_me.jpeg" class="dont-shoot-img">
-            <p style="color: white; font-weight: bold; font-size: 1.2rem; text-shadow: 2px 2px 4px black;">
-                please don't shoot me for sending this a little late
-            </p>
-            <img src="mausum_billa.jpeg" class="billa-img">
+            <img src="dont_shoot_me.jpeg" class="primary-img">
+            <p class="shoot-text">please don't shoot me for sending this a little late</p>
+            <img src="mausum_billa.jpeg" class="small-billa">
             <div class="arrow-box" onclick="showScreen(3)">
                 <div class="arrow">➔</div>
             </div>
@@ -149,6 +135,7 @@
                 We make each other happy. <br>
                 You complete me."
             </p>
+            <br>
             <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="gmeet-btn">Click here to complete me</a>
         </div>
     </div>
@@ -160,59 +147,4 @@
 
         function createSkulls() {
             const container = document.getElementById('skull-container');
-            for(let i=0; i<60; i++) { // Increased to 60 skulls
-                const skull = document.createElement('div');
-                skull.innerHTML = '💀';
-                skull.style.position = 'absolute';
-                skull.style.left = Math.random() * 100 + 'vw';
-                skull.style.top = Math.random() * 100 + 'vh';
-                skull.style.opacity = '0.5'; // More visible
-                container.appendChild(skull);
-            }
-        }
-        createSkulls();
-
-        function startExperience() {
-            document.getElementById('starter-screen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('starter-screen').style.display = 'none';
-                document.getElementById('main-content').style.opacity = '1';
-                
-                m1.currentTime = 83; 
-                m1.volume = 0;
-                m1.play();
-                
-                let vol = 0;
-                let volumeInterval = setInterval(() => {
-                    if (vol < 0.7) {
-                        vol += 0.05;
-                        m1.volume = vol;
-                    } else {
-                        clearInterval(volumeInterval);
-                    }
-                }, 200);
-
-                createPetals();
-            }, 800);
-        }
-
-        function showScreen(num) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-            document.getElementById('screen' + num).classList.remove('hidden');
-        }
-
-        function createPetals() {
-            setInterval(() => {
-                const petal = document.createElement('div');
-                petal.classList.add('petal');
-                petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.width = Math.random() * 15 + 10 + 'px';
-                petal.style.height = petal.style.width;
-                petal.style.animationDuration = Math.random() * 3 + 2 + 's';
-                document.getElementById('main-content').appendChild(petal);
-                setTimeout(() => petal.remove(), 5000);
-            }, 300);
-        }
-    </script>
-</body>
-</html>
+            for(let i=0

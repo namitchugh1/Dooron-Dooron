@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For Tanu ❤️</title>
+    <title>Surprise for Tanu ❤️</title>
     <style>
         :root {
             --pink-bg: #fad0c4;
@@ -78,6 +78,21 @@
 
         .couple-photo { width: 260px; border: 10px solid white; border-radius: 5px; transform: rotate(-2deg); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
 
+        /* The Final Button Pulse Effect */
+        .gmeet-btn {
+            text-decoration: none; padding: 18px 45px; background: #ff4d6d;
+            color: white; border-radius: 50px; font-weight: bold;
+            box-shadow: 0 5px 20px rgba(255,77,109,0.4);
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(255,77,109,0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 5px 30px rgba(255,77,109,0.6); }
+            100% { transform: scale(1); box-shadow: 0 5px 20px rgba(255,77,109,0.4); }
+        }
+
         /* Rose Petal Animation */
         .petal {
             position: absolute; background-color: #ff4d6d;
@@ -125,8 +140,9 @@
 
         <div id="screen3" class="screen hidden">
             <img src="last_christmas.jpeg" class="couple-photo">
-            <h2 style="color: #ff4d6d; margin: 30px 0 15px;">Every moment with you is a gift...</h2>
-            <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" style="text-decoration:none; padding:15px 40px; background:#ff4d6d; color:white; border-radius:50px; font-weight:bold; box-shadow: 0 5px 20px rgba(255,77,109,0.4);">Join our date ❤️</a>
+            <h2 style="color: #ff4d6d; margin: 30px 0 20px;">Every moment with you is a gift...</h2>
+            
+            <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="gmeet-btn">Join our date ❤️</a>
         </div>
     </div>
 

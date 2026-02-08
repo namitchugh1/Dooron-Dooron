@@ -82,29 +82,31 @@
         .bg-shoulder { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('put_your_head_on_my_shoulder.jpeg'); }
 
         .romantic-screen {
-            position: absolute; width: 90%; max-width: 500px;
+            position: absolute; width: 90%; max-width: 350px;
             transition: all 1s ease; 
             display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            align-items: center;
         }
 
-        .screen-hidden { opacity: 0; transform: translate(-50%, -40%) scale(0.9) !important; pointer-events: none; display: none; }
+        /* Screen 4: Top Right */
+        #screen-4 { top: 40px; right: 20px; }
+        
+        /* Screen 5: Bottom Right */
+        #screen-5 { bottom: 40px; right: 20px; }
+
+        .screen-hidden { opacity: 0; pointer-events: none; display: none; }
 
         .middle-text { 
             font-size: 1.2rem; color: white; font-weight: bold; 
             background: rgba(255, 77, 109, 0.85); 
-            padding: 30px; border-radius: 20px; backdrop-filter: blur(10px);
+            padding: 25px; border-radius: 20px; backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.6;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            min-height: 180px; width: 100%; box-sizing: border-box;
-            text-align: center;
+            text-align: center; width: 100%; box-sizing: border-box;
         }
 
         .love-cta { 
-            margin-top: 35px; 
-            cursor: pointer; 
-            color: white; 
+            margin-top: 20px; cursor: pointer; color: white; 
             display: flex; flex-direction: column; align-items: center;
         }
 

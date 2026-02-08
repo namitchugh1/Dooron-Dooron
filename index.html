@@ -35,19 +35,19 @@
             width: 280px; border-radius: 15px; border: 3px solid #444; z-index: 102;
         }
 
-        /* Small White Text for Jokes */
+        /* Increased White Text Size for Jokes */
         .joke-text {
-            color: white; font-size: 0.9rem; margin-top: 20px;
-            font-weight: normal; text-align: center; z-index: 102;
-            letter-spacing: 0.5px; padding: 0 20px;
+            color: white; font-size: 1.4rem; margin-top: 25px;
+            font-weight: bold; text-align: center; z-index: 102;
+            letter-spacing: 0.5px; padding: 0 20px; text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
         }
 
         .small-billa { width: 70px; border-radius: 10px; margin-top: 15px; z-index: 102; }
 
         .enter-btn {
-            margin-top: 30px; padding: 12px 30px; background: var(--deep-pink);
+            margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 5px;
-            font-weight: bold; cursor: pointer; font-size: 0.9rem; z-index: 102;
+            font-weight: bold; cursor: pointer; font-size: 1rem; z-index: 102;
         }
 
         .skull-bg {
@@ -71,13 +71,13 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* Shifting Final Screen to Top Right */
-        #screen-final {
-            top: 5%;
-            right: 5%;
+        /* SCREEN 4: Top Right Positioning */
+        #screen-4 {
+            top: 50px;
+            right: 20px;
             align-items: flex-end;
             text-align: right;
-            max-width: 300px;
+            max-width: 280px;
         }
 
         .screen-hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
@@ -114,22 +114,23 @@
 </head>
 <body>
 
-    <div id="joke1" class="joke-screen">
+    <div id="screen-1" class="joke-screen">
         <div class="skull-bg"></div>
         <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
         <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
-        <button class="enter-btn" onclick="goToJoke2()">sorry jaan, open to karo</button>
+        <button class="enter-btn" onclick="goToJoke2()">jaan, open to karo</button>
     </div>
 
-    <div id="joke2" class="joke-screen remove-me">
+    <div id="screen-2" class="joke-screen remove-me">
         <div class="skull-bg"></div>
         <img src="dont_shoot_me.jpeg" class="primary-img">
         <p class="joke-text">please don't shoot me for sending this a little late</p>
-        <img src="mausum_billa.png" class="small-billa"> <button class="enter-btn" onclick="startExperience()">Ab to maaf kardo ❤️</button>
+        <img src="mausum_billa.png" class="small-billa">
+        <button class="enter-btn" onclick="startExperience()">Ab to maaf kardo ❤️</button>
     </div>
 
     <div id="main-content">
-        <div id="screen-poem" class="screen">
+        <div id="screen-3" class="screen">
             <p style="color:white; font-style:italic; margin-bottom:20px; font-size: 0.8rem;">a little late but i hope I am worth the wait</p>
             <div class="middle-text">
                 Lagta hai hamari khamoshi ko tum berukhi samjh baithi, <br><br>
@@ -140,7 +141,7 @@
             </div>
         </div>
 
-        <div id="screen-final" class="screen screen-hidden">
+        <div id="screen-4" class="screen screen-hidden">
             <div class="middle-text">
                 "There is only one reason why we should be together... <br><br>
                 We make each other happy. <br>
@@ -172,14 +173,14 @@
         createSkulls();
 
         function goToJoke2() {
-            document.getElementById('joke1').classList.add('remove-me');
-            document.getElementById('joke2').classList.remove('remove-me');
+            document.getElementById('screen-1').classList.add('remove-me');
+            document.getElementById('screen-2').classList.remove('remove-me');
         }
 
         function startExperience() {
-            document.getElementById('joke2').style.opacity = '0';
+            document.getElementById('screen-2').style.opacity = '0';
             setTimeout(() => {
-                document.getElementById('joke2').classList.add('remove-me');
+                document.getElementById('screen-2').classList.add('remove-me');
                 const main = document.getElementById('main-content');
                 main.style.display = 'flex';
                 setTimeout(() => { main.style.opacity = '1'; }, 50);
@@ -203,8 +204,8 @@
         }
 
         function showFinalScreen() {
-            document.getElementById('screen-poem').classList.add('screen-hidden');
-            document.getElementById('screen-final').classList.remove('screen-hidden');
+            document.getElementById('screen-3').classList.add('screen-hidden');
+            document.getElementById('screen-4').classList.remove('screen-hidden');
         }
 
         function createPetals() {

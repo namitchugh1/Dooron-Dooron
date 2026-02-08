@@ -8,7 +8,8 @@
         :root {
             --deep-pink: #ff4d6d;
             --light-blue: #a2d2ff;
-            --joke-gray: #4a4a4a; /* Professional gray tone */
+            --soft-pink: #ffe5ec;
+            --joke-gray: #4a4a4a;
         }
 
         body, html {
@@ -18,8 +19,8 @@
             background-color: black;
         }
 
-        /* --- JOKE SCREENS --- */
-        .joke-screen {
+        /* --- SCREENS --- */
+        .full-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 100; transition: opacity 0.8s ease;
@@ -27,58 +28,41 @@
 
         #screen-1 { background-color: black; }
         #screen-2 { background-color: var(--light-blue); }
+        #screen-3 { background-color: var(--soft-pink); text-align: center; }
 
         .remove-me { display: none !important; }
 
         .primary-img { 
-            width: auto; height: 55vh; 
-            border-radius: 15px; border: 3px solid #444; z-index: 102;
-            object-fit: contain;
+            width: auto; height: 55vh; border-radius: 15px; border: 3px solid #444; z-index: 102; object-fit: contain;
         }
 
         .ganpat-photo {
-            width: auto; height: 60vh; 
-            object-fit: contain; border: 4px solid white; border-radius: 15px; z-index: 102;
+            width: auto; height: 60vh; object-fit: contain; border: 4px solid white; border-radius: 15px; z-index: 102;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        /* Gray Text Styling for Jokes */
         .joke-text {
-            color: var(--joke-gray); 
-            font-size: 1.4rem; margin-top: 25px;
-            font-weight: bold; text-align: center; z-index: 102;
-            letter-spacing: 0.5px; padding: 0 20px;
+            color: var(--joke-gray); font-size: 1.4rem; margin-top: 25px;
+            font-weight: bold; text-align: center; z-index: 102; padding: 0 20px;
         }
         
-        /* Subtle shadow for Screen 1 gray text to make it pop on black */
-        #screen-1 .joke-text {
-            color: #888; /* Slightly lighter gray for black BG visibility */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
+        #screen-1 .joke-text { color: #888; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
 
-        #screen-2 .joke-text { 
-            color: var(--joke-gray); 
-            text-shadow: none; 
+        .bridge-text {
+            font-size: 1.5rem; color: var(--deep-pink); font-style: italic; font-weight: bold;
+            padding: 20px; z-index: 102; animation: fadeIn 2s ease-in;
         }
 
         .small-billa { width: 70px; border-radius: 10px; margin-top: 15px; z-index: 102; }
 
         .enter-btn {
             margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
-            color: white; border: none; border-radius: 5px;
-            font-weight: bold; cursor: pointer; font-size: 1rem; z-index: 102;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .skull-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            font-size: 2.5rem; opacity: 0.5; overflow: hidden; z-index: 101; pointer-events: none;
+            color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; z-index: 102;
         }
 
         /* --- ROMANTIC FLOW --- */
         #main-content {
-            height: 100%; width: 100%;
-            display: none;
+            height: 100%; width: 100%; display: none;
             justify-content: center; align-items: center;
             opacity: 0; transition: opacity 1.5s ease;
             background-size: cover; background-position: center;
@@ -87,14 +71,13 @@
         .bg-about-you { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('about_you.jpeg'); }
         .bg-shoulder { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('put_your_head_on_my_shoulder.jpeg'); }
 
-        .screen {
+        .romantic-screen {
             position: absolute; width: 90%; max-width: 500px;
-            transition: all 0.8s ease;
-            display: flex; flex-direction: column;
+            transition: all 0.8s ease; display: flex; flex-direction: column;
         }
 
-        #screen-3 { top: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
-        #screen-4 { bottom: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
+        #screen-4 { top: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
+        #screen-5 { bottom: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
 
         .screen-hidden { opacity: 0; transform: scale(0.9); pointer-events: none; display: none; }
 
@@ -118,36 +101,43 @@
             50% { transform: scale(1.15); opacity: 1; }
         }
 
-        .gmeet-btn {
-            text-decoration: none; padding: 18px 45px; background: var(--deep-pink);
-            color: white; border-radius: 50px; font-weight: bold; font-size: 1rem;
-            box-shadow: 0 5px 20px rgba(255,77,109,0.4);
-            animation: pulse 2.5s infinite; display: inline-block; margin-top: 25px;
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .petal {
+            position: absolute; background-color: var(--deep-pink);
+            border-radius: 150% 0 150% 0; opacity: 0.6;
+            pointer-events: none; animation: fall linear infinite; z-index: 101;
         }
+        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div id="screen-1" class="joke-screen">
-        <div class="skull-bg"></div>
+    <div id="screen-1" class="full-screen">
+        <div id="skull-container" style="position:absolute; width:100%; height:100%;"></div>
         <img src="dont_shoot_me.jpeg" class="primary-img">
         <p class="joke-text">please don't shoot me for sending this a little late</p>
         <img src="mausum_billa.png" class="small-billa">
         <button class="enter-btn" onclick="goToJoke2()">jaan, click toh karo</button>
     </div>
 
-    <div id="screen-2" class="joke-screen remove-me">
+    <div id="screen-2" class="full-screen remove-me">
         <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
         <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
-        <button class="enter-btn" onclick="startExperience()">Ab to maaf kardo ❤️</button>
+        <button class="enter-btn" onclick="goToBridge()">Ab to maaf kardo ❤️</button>
+    </div>
+
+    <div id="screen-3" class="full-screen remove-me">
+        <div id="bridge-petals" style="position:absolute; width:100%; height:100%;"></div>
+        <p class="bridge-text">a little late but i hope I am worth the wait</p>
+        <button class="enter-btn" onclick="startExperience()">See why...</button>
     </div>
 
     <div id="main-content" class="bg-about-you">
-        <div id="screen-3" class="screen">
-            <p style="color:white; font-style:italic; margin-bottom:15px; font-size: 0.8rem; text-shadow: 1px 1px 2px black;">a little late but i hope I am worth the wait</p>
+        <div id="screen-4" class="romantic-screen">
             <div class="middle-text">
                 Lagta hai hamari khamoshi ko tum berukhi samjh baithi, <br><br>
-                tum kya jano hum toh aaj bhi tumhare intezaar mein har lamahaan guzaar rahe hain.
+                tum kya jano hum toh roz tumhare intezaar mein har lamahaan guzaar rahe hain.
             </div>
             <div class="love-cta" onclick="showFinalScreen()">
                 <span class="love-symbol">❤️</span>
@@ -155,13 +145,16 @@
             </div>
         </div>
 
-        <div id="screen-4" class="screen screen-hidden">
+        <div id="screen-5" class="romantic-screen screen-hidden">
             <div class="middle-text">
                 "There is only one reason why we should be together... <br><br>
                 We make each other happy. <br>
                 You complete me."
             </div>
-            <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="gmeet-btn">Click here to complete me</a>
+            <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="gmeet-btn" 
+               style="text-decoration: none; padding: 18px 45px; background: var(--deep-pink); color: white; border-radius: 50px; font-weight: bold; margin-top: 25px; display: inline-block;">
+               Click here to complete me
+            </a>
         </div>
     </div>
 
@@ -173,14 +166,14 @@
         const mRomantic = document.getElementById('music-romantic');
 
         function createSkulls() {
-            const container = document.querySelector('#screen-1 .skull-bg');
-            for(let i=0; i<60; i++) {
+            const container = document.getElementById('skull-container');
+            for(let i=0; i<40; i++) {
                 const skull = document.createElement('div');
                 skull.innerHTML = '💀';
                 skull.style.position = 'absolute';
                 skull.style.left = Math.random() * 100 + 'vw';
                 skull.style.top = Math.random() * 100 + 'vh';
-                skull.style.opacity = '0.5';
+                skull.style.opacity = '0.4';
                 container.appendChild(skull);
             }
         }
@@ -189,32 +182,30 @@
         function goToJoke2() {
             document.getElementById('screen-1').classList.add('remove-me');
             document.getElementById('screen-2').classList.remove('remove-me');
-            mGanpat.currentTime = 71;
-            mGanpat.volume = 0;
-            mGanpat.play();
+            mGanpat.currentTime = 71; mGanpat.volume = 0; mGanpat.play();
             let vol = 0;
             let fadeGanpat = setInterval(() => {
-                if (vol < 0.8) {
-                    vol += 0.05;
-                    mGanpat.volume = vol;
-                } else {
-                    clearInterval(fadeGanpat);
-                }
+                if (vol < 0.8) { vol += 0.05; mGanpat.volume = vol; } 
+                else { clearInterval(fadeGanpat); }
             }, 200);
         }
 
-        function startExperience() {
+        function goToBridge() {
             mGanpat.pause();
-            document.getElementById('screen-2').style.opacity = '0';
+            document.getElementById('screen-2').classList.add('remove-me');
+            document.getElementById('screen-3').classList.remove('remove-me');
+            createPetals('bridge-petals');
+        }
+
+        function startExperience() {
+            document.getElementById('screen-3').style.opacity = '0';
             setTimeout(() => {
-                document.getElementById('screen-2').classList.add('remove-me');
+                document.getElementById('screen-3').classList.add('remove-me');
                 const main = document.getElementById('main-content');
                 main.style.display = 'flex';
                 setTimeout(() => { main.style.opacity = '1'; }, 50);
-                mRomantic.currentTime = 83; 
-                mRomantic.volume = 0.7;
-                mRomantic.play();
-                createPetals();
+                mRomantic.currentTime = 83; mRomantic.volume = 0.7; mRomantic.play();
+                createPetals('main-content');
             }, 800);
         }
 
@@ -222,31 +213,24 @@
             const main = document.getElementById('main-content');
             main.classList.remove('bg-about-you');
             main.classList.add('bg-shoulder');
-            document.getElementById('screen-3').classList.add('screen-hidden');
-            document.getElementById('screen-4').classList.remove('screen-hidden');
-            document.getElementById('screen-4').style.display = 'flex';
+            document.getElementById('screen-4').classList.add('screen-hidden');
+            document.getElementById('screen-5').classList.remove('screen-hidden');
+            document.getElementById('screen-5').style.display = 'flex';
         }
 
-        function createPetals() {
+        function createPetals(targetId) {
+            const target = document.getElementById(targetId) || document.body;
             setInterval(() => {
                 const petal = document.createElement('div');
-                petal.style.position = 'absolute';
-                petal.style.backgroundColor = 'var(--deep-pink)';
-                petal.style.borderRadius = '150% 0 150% 0';
-                petal.style.opacity = '0.6';
+                petal.className = 'petal';
                 petal.style.left = Math.random() * 100 + 'vw';
                 petal.style.width = Math.random() * 15 + 10 + 'px';
                 petal.style.height = petal.style.width;
-                petal.style.zIndex = '5';
                 petal.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
-                document.getElementById('main-content').appendChild(petal);
+                target.appendChild(petal);
                 setTimeout(() => petal.remove(), 5000);
             }, 300);
         }
-
-        const style = document.createElement('style');
-        style.innerHTML = `@keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }`;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>

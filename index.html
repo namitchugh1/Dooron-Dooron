@@ -3,172 +3,155 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For My Tanu ❤️</title>
+    <title>Wait for it... ❤️</title>
     <style>
         :root {
             --pink-bg: #fad0c4;
             --deep-pink: #ff4d6d;
-            --text-color: #4a4a4a;
+            --starter-blue: #007bff;
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: 'Segoe UI', sans-serif;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        /* Rose Petal Animation */
+        /* --- SCREEN 0: STARTER (BLUE) --- */
+        #starter-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--starter-blue);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 100; transition: opacity 0.8s ease;
+        }
+
+        .ganpat-photo {
+            width: 80%; /* Responsive width */
+            max-width: 400px; /* Limits size on desktop */
+            height: 50vh; /* Covers 50% of the page height */
+            object-fit: cover;
+            border: 5px solid white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .warning-text {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .enter-btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: white;
+            color: var(--starter-blue);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* --- ROMANTIC SCREENS (PINK) --- */
+        #main-content {
+            height: 100%; width: 100%;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 1s ease;
+        }
+
+        .screen {
+            position: absolute; width: 90%; max-width: 500px;
+            text-align: center; transition: all 0.8s ease;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
+
+        .top-text { font-size: 1.1rem; color: white; margin-bottom: 30px; font-style: italic; }
+        .middle-text { 
+            font-size: 1.4rem; color: var(--deep-pink); font-weight: bold; 
+            background: rgba(255, 255, 255, 0.6); padding: 25px; 
+            border-radius: 20px; backdrop-filter: blur(5px);
+        }
+
+        .arrow { font-size: 3rem; color: var(--deep-pink); cursor: pointer; animation: bounce 2s infinite; margin-top: 20px; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
+
+        .couple-photo { width: 250px; border: 8px solid white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* Petal Animation */
         .petal {
-            position: absolute;
-            background-color: #ff4d6d;
-            border-radius: 150% 0 150% 0;
-            opacity: 0.7;
-            pointer-events: none;
-            animation: fall linear infinite;
+            position: absolute; background-color: #ff4d6d;
+            border-radius: 150% 0 150% 0; opacity: 0.7;
+            pointer-events: none; animation: fall linear infinite; z-index: 5;
         }
-
         @keyframes fall {
             0% { transform: translateY(-10vh) rotate(0deg); }
             100% { transform: translateY(110vh) rotate(360deg); }
-        }
-
-        /* Screen Management */
-        .screen {
-            position: absolute;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .hidden {
-            opacity: 0;
-            transform: scale(0.9);
-            pointer-events: none;
-        }
-
-        /* Typography */
-        .top-text {
-            font-size: 1.1rem;
-            color: white;
-            position: absolute;
-            top: 50px;
-            font-style: italic;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-        }
-
-        .middle-text {
-            font-size: 1.5rem;
-            color: var(--deep-pink);
-            font-weight: bold;
-            line-height: 1.6;
-            background: rgba(255, 255, 255, 0.4);
-            padding: 20px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        .bottom-nav {
-            position: absolute;
-            bottom: 60px;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .arrow {
-            font-size: 2.5rem;
-            color: var(--deep-pink);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        /* Photo Styles */
-        .couple-photo {
-            width: 280px;
-            height: 350px;
-            object-fit: cover;
-            border: 8px solid white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
-
-        .gmeet-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
-            background: #202124;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .gmeet-link:hover {
-            background: #3c4043;
-            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
 
-    <div id="screen1" class="screen">
-        <p class="top-text">a little late but i hope I am worth the wait</p>
-        
-        <p class="middle-text">
-            "Lagta hai hamari khamoshi ko tum berukhi toh nahi samjh baithi, <br>
-            tum kya jano hum toh aaj bhi tumhare intezaar mein apni har dhadkan ginte hain."
-        </p>
+    <div id="starter-screen">
+        <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
+        <p class="warning-text">"Yeh sab kya bhej raho ho pity kar dungi"</p>
+        <button class="enter-btn" onclick="startExperience()">Sorry! Open Anyway</button>
+    </div>
 
-        <div class="bottom-nav" onclick="showScreen2()">
-            <p style="color: #444; margin-bottom: 5px;">ageh bado jaanu</p>
-            <div class="arrow">➔</div>
+    <div id="main-content">
+        <div id="screen1" class="screen">
+            <p class="top-text">a little late but i hope I am worth the wait</p>
+            <p class="middle-text">
+                "Lagta hai hamari khamoshi ko tum berukhi toh nahi samjh baithi, <br>
+                tum kya jano hum toh aaj bhi tumhare intezaar mein apni har dhadkan ginte hain."
+            </p>
+            <div onclick="showScreen2()" style="margin-top: 40px; cursor: pointer;">
+                <p style="color: #444;">ageh bado jaanu</p>
+                <div class="arrow">➔</div>
+            </div>
+        </div>
+
+        <div id="screen2" class="screen hidden">
+            <img src="last_christmas.jpeg" class="couple-photo">
+            <h2 style="color: #ff4d6d; margin: 20px 0;">Every moment with you is a gift...</h2>
+            <a href="https://meet.google.com/your-code" style="text-decoration:none; padding:15px 30px; background:#ff4d6d; color:white; border-radius:30px; font-weight:bold; box-shadow: 0 5px 15px rgba(255,77,109,0.4);">Join the Meet ❤️</a>
         </div>
     </div>
 
-    <div id="screen2" class="screen hidden">
-        <img src="last_christmas.jpeg" alt="Our Memory" class="couple-photo">
-        <h2 style="color: #ff4d6d;">Every moment with you is a gift...</h2>
-        
-        <a href="YOUR_LINK_HERE" class="gmeet-link">Join me for a date? ❤️</a>
-    </div>
-
-    <audio id="music1" loop>
-        <source src="about_you.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="music2" loop>
-        <source src="last_christmas.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="music1" src="about_you.mp3" loop preload="auto"></audio>
+    <audio id="music2" src="last_christmas.mp3" loop preload="auto"></audio>
 
     <script>
-        const music1 = document.getElementById('music1');
-        const music2 = document.getElementById('music2');
+        const m1 = document.getElementById('music1');
+        const m2 = document.getElementById('music2');
 
-        // Start Petals & Music on first click
-        document.body.addEventListener('click', () => {
-            if (music1.paused && document.getElementById('screen2').classList.contains('hidden')) {
-                music1.play().catch(e => console.log("Audio play blocked"));
+        function startExperience() {
+            // Hide starter screen
+            document.getElementById('starter-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('starter-screen').style.display = 'none';
+                document.getElementById('main-content').style.opacity = '1';
+                
+                // Start music and petals
+                m1.play().catch(e => console.log("Music blocked"));
                 createPetals();
-            }
-        }, { once: false });
+            }, 800);
+        }
+
+        function showScreen2() {
+            document.getElementById('screen1').classList.add('hidden');
+            document.getElementById('screen2').classList.remove('hidden');
+            
+            // Crossfade music
+            m1.pause();
+            m2.play();
+        }
 
         function createPetals() {
             setInterval(() => {
@@ -178,23 +161,10 @@
                 petal.style.width = Math.random() * 15 + 10 + 'px';
                 petal.style.height = petal.style.width;
                 petal.style.animationDuration = Math.random() * 3 + 2 + 's';
-                document.body.appendChild(petal);
-                
+                document.getElementById('main-content').appendChild(petal);
                 setTimeout(() => petal.remove(), 5000);
             }, 300);
         }
-
-        function showScreen2() {
-            document.getElementById('screen1').classList.add('hidden');
-            document.getElementById('screen2').classList.remove('hidden');
-            
-            // Crossfade Music
-            music1.pause();
-            music2.play().catch(e => console.log("Audio play blocked"));
-        }
-
-        // Initialize petals on load
-        window.onload = createPetals;
     </script>
 </body>
 </html>

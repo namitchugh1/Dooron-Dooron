@@ -49,29 +49,22 @@
             align-items: center; 
         }
 
-        .middle-text-box { 
-            font-size: 1.15rem; color: white; font-weight: bold; 
-            background: rgba(255, 77, 109, 0.85); 
-            padding: 20px; border-radius: 20px; backdrop-filter: blur(10px);
-            text-align: center; margin-bottom: 20px;
-        }
-
-        /* --- SCREEN 9 GRID FIX --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
+        /* --- SCREEN 9 SPECIFIC GRID --- */
+        .photo-grid-9 {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            grid-template-rows: 1fr 1fr !important;
             width: 100vw;
             height: 100vh;
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 101;
         }
-        .grid-container img {
+        .photo-grid-9 img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
 
         /* --- ANIMATIONS --- */
@@ -130,7 +123,7 @@
         </div>
         <div id="screen-5" class="full-screen remove-me">
             <div class="br-cluster">
-                <div class="middle-text-box">
+                <div style="font-size: 1.15rem; color: white; font-weight: bold; background: rgba(255, 77, 109, 0.85); padding: 20px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; margin-bottom: 20px;">
                     When I am with you, life really does feel like la vie en rose... <br><br>
                     everything seems a little more beautiful, a little more bright, just because you're in it.
                 </div>
@@ -178,14 +171,14 @@
         </div>
     </div>
 
-    <div id="screen-smile" class="full-screen remove-me">
-        <div class="grid-container">
-            <img src="under_the_pink_tree.jpeg">
-            <img src="smile1.jpeg">
-            <img src="smile2.jpeg">
-            <img src="smile3.jpeg">
+    <div id="screen-smile" class="full-screen remove-me" style="display: block;">
+        <div class="photo-grid-9">
+            <img src="under_the_pink_tree.jpeg" alt="tree">
+            <img src="smile1.jpeg" alt="smile1">
+            <img src="smile2.jpeg" alt="smile2">
+            <img src="smile3.jpeg" alt="smile3">
         </div>
-        <div style="position: relative; z-index: 110; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 100%; padding-bottom: 50px; pointer-events: none;">
+        <div style="position: absolute; bottom: 50px; left: 0; width: 100%; z-index: 110; display: flex; flex-direction: column; align-items: center; pointer-events: none;">
             <h2 style="font-family: serif; color: white; font-style: italic; font-size: 2.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); margin-bottom: 20px;">my reason to smile</h2>
             <button class="enter-btn" onclick="showFinalMessage()" style="pointer-events: auto;">Can I tell you a secret?</button>
         </div>

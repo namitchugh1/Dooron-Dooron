@@ -7,6 +7,8 @@
     <style>
         :root {
             --deep-pink: #ff4d6d;
+            --light-blue: #a2d2ff;
+            --joke-gray: #4a4a4a; /* Professional gray tone */
         }
 
         body, html {
@@ -16,29 +18,47 @@
             background-color: black;
         }
 
-        /* --- JOKE SCREENS (BLACK BG) --- */
+        /* --- JOKE SCREENS --- */
         .joke-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: black;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 100; transition: opacity 0.8s ease;
         }
 
+        #screen-1 { background-color: black; }
+        #screen-2 { background-color: var(--light-blue); }
+
         .remove-me { display: none !important; }
 
-        .ganpat-photo {
-            width: auto; height: 50vh; 
-            object-fit: contain; border: 3px solid #333; border-radius: 10px; z-index: 102;
-        }
-
         .primary-img { 
-            width: 280px; border-radius: 15px; border: 3px solid #444; z-index: 102;
+            width: auto; height: 55vh; 
+            border-radius: 15px; border: 3px solid #444; z-index: 102;
+            object-fit: contain;
         }
 
+        .ganpat-photo {
+            width: auto; height: 60vh; 
+            object-fit: contain; border: 4px solid white; border-radius: 15px; z-index: 102;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Gray Text Styling for Jokes */
         .joke-text {
-            color: white; font-size: 1.4rem; margin-top: 25px;
+            color: var(--joke-gray); 
+            font-size: 1.4rem; margin-top: 25px;
             font-weight: bold; text-align: center; z-index: 102;
-            letter-spacing: 0.5px; padding: 0 20px; text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+            letter-spacing: 0.5px; padding: 0 20px;
+        }
+        
+        /* Subtle shadow for Screen 1 gray text to make it pop on black */
+        #screen-1 .joke-text {
+            color: #888; /* Slightly lighter gray for black BG visibility */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        #screen-2 .joke-text { 
+            color: var(--joke-gray); 
+            text-shadow: none; 
         }
 
         .small-billa { width: 70px; border-radius: 10px; margin-top: 15px; z-index: 102; }
@@ -47,6 +67,7 @@
             margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 5px;
             font-weight: bold; cursor: pointer; font-size: 1rem; z-index: 102;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .skull-bg {
@@ -59,11 +80,10 @@
             height: 100%; width: 100%;
             display: none;
             justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 1.5s ease, background-image 0.8s ease;
+            opacity: 0; transition: opacity 1.5s ease;
             background-size: cover; background-position: center;
         }
 
-        /* ADJUST BRIGHTNESS: The gradient (rgba 0.15) keeps her face bright but helps white text pop */
         .bg-about-you { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('about_you.jpeg'); }
         .bg-shoulder { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('put_your_head_on_my_shoulder.jpeg'); }
 
@@ -73,21 +93,8 @@
             display: flex; flex-direction: column;
         }
 
-        /* SCREEN 3: TOP RIGHT */
-        #screen-3 {
-            top: 40px;
-            right: 20px;
-            align-items: flex-end;
-            text-align: right;
-            max-width: 320px;
-        }
-
-        /* SCREEN 4: CENTERED */
-        #screen-4 {
-            align-items: center;
-            text-align: center;
-            width: 100%;
-        }
+        #screen-3 { top: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
+        #screen-4 { bottom: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
 
         .screen-hidden { opacity: 0; transform: scale(0.9); pointer-events: none; display: none; }
 
@@ -99,33 +106,23 @@
         }
 
         .love-cta { margin-top: 25px; cursor: pointer; color: white; text-align: center; }
-        .love-symbol { font-size: 3.5rem; color: var(--deep-pink); animation: heartbeat 1.2s infinite; display: block; filter: drop-shadow(0 0 10px white); }
+        .love-symbol { 
+            font-size: 3.5rem; color: var(--deep-pink); 
+            animation: heartbeat 3s infinite ease-in-out; 
+            display: block; filter: drop-shadow(0 0 10px white); 
+        }
         .cta-label { font-size: 0.8rem; font-weight: bold; font-style: italic; text-shadow: 1px 1px 4px black; }
 
         @keyframes heartbeat {
-            0% { transform: scale(1); }
-            15% { transform: scale(1.3); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.15); }
-            60% { transform: scale(1); }
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; }
         }
 
         .gmeet-btn {
             text-decoration: none; padding: 18px 45px; background: var(--deep-pink);
             color: white; border-radius: 50px; font-weight: bold; font-size: 1rem;
             box-shadow: 0 5px 20px rgba(255,77,109,0.4);
-            animation: pulse 2s infinite; display: inline-block; margin-top: 25px;
-        }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-
-        .petal {
-            position: absolute; background-color: var(--deep-pink);
-            border-radius: 150% 0 150% 0; opacity: 0.6;
-            pointer-events: none; animation: fall linear infinite; z-index: 5;
-        }
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
+            animation: pulse 2.5s infinite; display: inline-block; margin-top: 25px;
         }
     </style>
 </head>
@@ -133,16 +130,15 @@
 
     <div id="screen-1" class="joke-screen">
         <div class="skull-bg"></div>
-        <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
-        <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
-        <button class="enter-btn" onclick="goToJoke2()">jaan, open to karo</button>
-    </div>
-
-    <div id="screen-2" class="joke-screen remove-me">
-        <div class="skull-bg"></div>
         <img src="dont_shoot_me.jpeg" class="primary-img">
         <p class="joke-text">please don't shoot me for sending this a little late</p>
         <img src="mausum_billa.png" class="small-billa">
+        <button class="enter-btn" onclick="goToJoke2()">jaan, click toh karo</button>
+    </div>
+
+    <div id="screen-2" class="joke-screen remove-me">
+        <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
+        <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
         <button class="enter-btn" onclick="startExperience()">Ab to maaf kardo ❤️</button>
     </div>
 
@@ -160,7 +156,7 @@
         </div>
 
         <div id="screen-4" class="screen screen-hidden">
-            <div class="middle-text" style="max-width: 400px;">
+            <div class="middle-text">
                 "There is only one reason why we should be together... <br><br>
                 We make each other happy. <br>
                 You complete me."
@@ -169,54 +165,55 @@
         </div>
     </div>
 
-    <audio id="music1" src="about_you.mp3" loop preload="auto"></audio>
+    <audio id="music-ganpat" src="ganpat.mp3" preload="auto"></audio>
+    <audio id="music-romantic" src="about_you.mp3" loop preload="auto"></audio>
 
     <script>
-        const m1 = document.getElementById('music1');
+        const mGanpat = document.getElementById('music-ganpat');
+        const mRomantic = document.getElementById('music-romantic');
 
         function createSkulls() {
-            const containers = document.querySelectorAll('.skull-bg');
-            containers.forEach(container => {
-                for(let i=0; i<60; i++) {
-                    const skull = document.createElement('div');
-                    skull.innerHTML = '💀';
-                    skull.style.position = 'absolute';
-                    skull.style.left = Math.random() * 100 + 'vw';
-                    skull.style.top = Math.random() * 100 + 'vh';
-                    skull.style.opacity = '0.5';
-                    container.appendChild(skull);
-                }
-            });
+            const container = document.querySelector('#screen-1 .skull-bg');
+            for(let i=0; i<60; i++) {
+                const skull = document.createElement('div');
+                skull.innerHTML = '💀';
+                skull.style.position = 'absolute';
+                skull.style.left = Math.random() * 100 + 'vw';
+                skull.style.top = Math.random() * 100 + 'vh';
+                skull.style.opacity = '0.5';
+                container.appendChild(skull);
+            }
         }
         createSkulls();
 
         function goToJoke2() {
             document.getElementById('screen-1').classList.add('remove-me');
             document.getElementById('screen-2').classList.remove('remove-me');
+            mGanpat.currentTime = 71;
+            mGanpat.volume = 0;
+            mGanpat.play();
+            let vol = 0;
+            let fadeGanpat = setInterval(() => {
+                if (vol < 0.8) {
+                    vol += 0.05;
+                    mGanpat.volume = vol;
+                } else {
+                    clearInterval(fadeGanpat);
+                }
+            }, 200);
         }
 
         function startExperience() {
+            mGanpat.pause();
             document.getElementById('screen-2').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('screen-2').classList.add('remove-me');
                 const main = document.getElementById('main-content');
                 main.style.display = 'flex';
                 setTimeout(() => { main.style.opacity = '1'; }, 50);
-                
-                m1.currentTime = 83; 
-                m1.volume = 0;
-                m1.play();
-                
-                let vol = 0;
-                let volumeInterval = setInterval(() => {
-                    if (vol < 0.7) {
-                        vol += 0.05;
-                        m1.volume = vol;
-                    } else {
-                        clearInterval(volumeInterval);
-                    }
-                }, 200);
-
+                mRomantic.currentTime = 83; 
+                mRomantic.volume = 0.7;
+                mRomantic.play();
                 createPetals();
             }, 800);
         }
@@ -225,7 +222,6 @@
             const main = document.getElementById('main-content');
             main.classList.remove('bg-about-you');
             main.classList.add('bg-shoulder');
-
             document.getElementById('screen-3').classList.add('screen-hidden');
             document.getElementById('screen-4').classList.remove('screen-hidden');
             document.getElementById('screen-4').style.display = 'flex';
@@ -234,15 +230,23 @@
         function createPetals() {
             setInterval(() => {
                 const petal = document.createElement('div');
-                petal.classList.add('petal');
+                petal.style.position = 'absolute';
+                petal.style.backgroundColor = 'var(--deep-pink)';
+                petal.style.borderRadius = '150% 0 150% 0';
+                petal.style.opacity = '0.6';
                 petal.style.left = Math.random() * 100 + 'vw';
                 petal.style.width = Math.random() * 15 + 10 + 'px';
                 petal.style.height = petal.style.width;
-                petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+                petal.style.zIndex = '5';
+                petal.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
                 document.getElementById('main-content').appendChild(petal);
                 setTimeout(() => petal.remove(), 5000);
             }, 300);
         }
+
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }`;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

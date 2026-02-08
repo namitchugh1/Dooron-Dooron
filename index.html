@@ -29,32 +29,31 @@
 
         /* --- BUTTONS & CTAs --- */
         .enter-btn {
-            margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
+            padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 102;
             box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); text-align: center; text-decoration: none;
-            display: inline-block;
+            display: inline-block; transition: transform 0.2s;
         }
+        .btn-white { background: white !important; color: var(--deep-pink) !important; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); }
+        .enter-btn:active { transform: scale(0.95); }
 
-        /* --- ROMANTIC FLOW BASICS --- */
+        /* --- SCREEN 1 ALIGNMENT --- */
+        .joke-text-container { display: flex; align-items: center; justify-content: center; margin-top: 25px; padding: 0 20px; }
+        .inline-billa { width: 45px; height: auto; border-radius: 8px; margin-left: 10px; transform: rotate(5deg); }
+
+        /* --- ROMANTIC FLOW --- */
         #main-content {
             height: 100%; width: 100%; display: none;
             justify-content: center; align-items: center;
             opacity: 0; transition: opacity 3s ease-in-out; 
             background-size: cover; background-position: center;
         }
-
         .bg-about-you { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('about_you.jpeg'); }
         .bg-lavie { background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('la_vie_en_rose.jpeg'); }
         .bg-sexy { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('hey_sexy_lady.jpeg'); }
-        .bg-shoulder { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('put_your_head_on_my_shoulder.jpeg'); }
+        .bg-shoulder { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('put_your_head_on_my_shoulder.jpeg'); }
 
-        .romantic-screen {
-            position: absolute; width: 90%; max-width: 350px;
-            transition: all 1s ease; display: flex; flex-direction: column; align-items: center;
-        }
-
-        #screen-4, #screen-5, #screen-6 { bottom: 40px; right: 20px; } 
-        #screen-sexy { top: 50%; left: 50%; transform: translate(-50%, -50%); } 
+        .romantic-screen { position: absolute; width: 90%; max-width: 350px; transition: all 1s ease; display: flex; flex-direction: column; align-items: center; }
         .screen-hidden { opacity: 0; pointer-events: none; display: none !important; }
 
         .middle-text { 
@@ -64,102 +63,105 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center;
         }
 
-        /* --- SMILE SCREEN (SCREEN 8) --- */
-        #screen-8 { background: white; z-index: 110; }
-        .smile-grid {
-            display: flex; gap: 15px; margin-bottom: 20px;
-            perspective: 1000px;
-        }
-        .smile-img {
-            width: 100px; height: 150px; object-fit: cover;
-            border-radius: 12px; border: 4px solid #fff;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-        }
-        .smile-img:hover { transform: scale(1.1) rotate(2deg); }
-        .smile-title {
-            font-family: 'Georgia', serif; font-size: 2rem; color: var(--deep-pink);
-            font-style: italic; margin-top: 10px;
-        }
+        /* --- ANIMATIONS --- */
+        .petal { position: absolute; background-color: var(--deep-pink); border-radius: 150% 0 150% 0; opacity: 0.6; pointer-events: none; animation: fall linear infinite; z-index: 101; }
+        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+        @keyframes dreamFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes firePulse { from { transform: scale(1); filter: drop-shadow(0 0 5px #ff4d6d); } to { transform: scale(1.2); filter: drop-shadow(0 0 15px #ff4d6d); } }
+        @keyframes heartBeat { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
-        /* --- DREAM SCREEN STYLES --- */
+        /* --- SCREEN 8 & 9 SIZING --- */
+        .smile-grid { display: flex; gap: 10px; margin-bottom: 30px; width: 95%; justify-content: center; align-items: center; }
+        .smile-img { width: 30%; height: 250px; object-fit: cover; border-radius: 15px; border: 5px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
         .dream-photo-container { display: flex; gap: 20px; margin-bottom: 30px; }
         .dream-photo { width: 140px; height: 180px; object-fit: cover; border: 5px solid white; border-radius: 10px; }
-        .dream-box {
-            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px);
-            border-radius: 30px; padding: 30px; width: 80%; text-align: center;
-            animation: dreamFloat 4s infinite ease-in-out; color: white;
-        }
-        @keyframes dreamFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        .petal {
-            position: absolute; background-color: var(--deep-pink);
-            border-radius: 150% 0 150% 0; opacity: 0.6;
-            pointer-events: none; animation: fall linear infinite; z-index: 101;
-        }
-        @keyframes fall { 0% { transform: translateY(-10vh); } 100% { transform: translateY(110vh); } }
+        .dream-box { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border-radius: 30px; padding: 30px; width: 80%; text-align: center; animation: dreamFloat 4s infinite ease-in-out; color: white; }
     </style>
 </head>
 <body>
 
     <div id="screen-1" class="full-screen">
         <img src="dont_shoot_me.jpeg" style="height:55vh; border-radius:15px;">
-        <p style="color:#888;">please don't shoot me for sending this a little late</p>
-        <button class="enter-btn" onclick="goToJoke2()">jaan, yaha click karo</button>
+        <div class="joke-text-container">
+            <p style="color:#888; margin:0;">please don't shoot me for sending this a little late</p>
+            <img src="mausum_billa.png" class="inline-billa">
+        </div>
+        <button class="enter-btn" style="margin-top:30px;" onclick="goToJoke2()">jaan, yaha click karo</button>
     </div>
 
     <div id="screen-2" class="full-screen remove-me" style="background-color: var(--light-blue);">
         <img src="ganpat.jpeg" style="height:60vh; border-radius:15px; border:4px solid white;">
-        <p style="font-weight:bold; color:var(--joke-gray);">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
+        <p style="font-weight:bold; color:var(--joke-gray); text-align:center; padding: 20px;">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
         <div onclick="goToBridge()" style="cursor:pointer; background:white; padding:15px; border-radius:50px; color:var(--deep-pink); font-weight:bold;">maaf kardiya toh click karo</div>
     </div>
 
     <div id="screen-3" class="full-screen remove-me" style="background-color: var(--soft-pink);">
-        <div id="bridge-petals" style="position:absolute; width:100%; height:100%;"></div>
-        <p style="font-style:italic; font-size:1.5rem; color:var(--deep-pink);">a little late but i hope I am worth the wait</p>
-        <button class="enter-btn" onclick="startExperience()">click here for love</button>
+        <div id="bridge-petals" style="position:absolute; width:100%; height:100%; pointer-events:none;"></div>
+        <p style="font-style:italic; font-size:1.5rem; color:var(--deep-pink); text-align:center;">a little late but i hope I am worth the wait</p>
+        <button class="enter-btn" style="margin-top:30px;" onclick="startExperience()">click here for love</button>
     </div>
 
     <div id="main-content" class="bg-about-you">
-        <div id="screen-4" class="romantic-screen">
-            <div class="middle-text">Lagta hai hamari khamoshi ko tum berukhi samjh baithi...</div>
-            <div class="enter-btn" onclick="showLaVie()">click here for more love</div>
+        <div id="screen-4" class="romantic-screen" style="bottom: 40px; right: 20px;">
+            <div class="middle-text">
+                Lagta hai hamari khamoshi ko tum berukhi samjh baithi, <br><br>
+                tum kya jano hum toh roz tumhare intezaar mein lamahe guzaar rahe hain.
+            </div>
+            <div class="enter-btn btn-white" style="margin-top:20px;" onclick="showLaVie()">click here for more love</div>
         </div>
 
-        <div id="screen-5" class="romantic-screen screen-hidden">
-            <div class="middle-text">When I am with you, life really does feel like la vie en rose...</div>
-            <div class="enter-btn" onclick="showSexy()">Hold my hand</div>
+        <div id="screen-5" class="romantic-screen screen-hidden" style="bottom: 40px; right: 20px;">
+            <div class="middle-text">
+                When I am with you, life really does feel like la vie en rose... <br><br>
+                everything seems a little more beautiful, a little more bright, just because you're in it.
+            </div>
+            <div class="enter-btn btn-white" style="margin-top:20px;" onclick="showSexy()">Hold my hand</div>
+            <div style="font-size: 50px; margin-top: 15px; filter: drop-shadow(0 0 10px white); animation: heartBeat 1.5s infinite ease-in-out;">🤝</div>
         </div>
 
-        <div id="screen-sexy" class="romantic-screen screen-hidden">
-            <div class="middle-text">hey sexy lady you have taken my heart...</div>
-            <div class="enter-btn" onclick="showFinalMessage()">click to give it back</div>
-        </div>
-
-        <div id="screen-6" class="romantic-screen screen-hidden">
-            <div class="middle-text">There is only one reason why we should be together... You complete me.</div>
-            <div class="enter-btn" onclick="showDreamScreen()">Come home to me</div>
+        <div id="screen-sexy" class="romantic-screen screen-hidden" style="top: 0; left: 0; width: 100%; height: 100%; transform: none;">
+            <div style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 350px;">
+                <div class="middle-text">
+                    hey sexy lady you have taken my heart... <br><br>
+                    and I don't think I want it back, unless you're the one holding it forever.
+                </div>
+            </div>
+            <div style="position: absolute; bottom: 30px; right: 20px; display: flex; flex-direction: column; align-items: center;">
+                <div class="enter-btn" onclick="showBridgeToDream()">It's yours to keep ❤️</div>
+                <div style="font-size: 35px; margin-top: 10px; animation: firePulse 1.5s infinite alternate;">❤️‍🔥</div>
+            </div>
         </div>
     </div>
 
-    <div id="screen-7" class="full-screen remove-me" style="background:#1a1a2e;">
+    <div id="screen-dream" class="full-screen remove-me" style="background:#1a1a2e;">
         <div class="dream-photo-container">
             <img src="just_you_and_me.jpeg" class="dream-photo" style="transform:rotate(-5deg)">
             <img src="soniyo.jpeg" class="dream-photo" style="transform:rotate(5deg)">
         </div>
         <div class="dream-box">"kya tum banogi voh haseen sapna jise roz dekhne ko ji karta heh"</div>
-        <button class="enter-btn" onclick="showSmileScreen()">Haa, banungi ❤️</button>
+        <button class="enter-btn" style="margin-top:30px;" onclick="showSmileScreen()">Haa, banungi ❤️</button>
     </div>
 
-    <div id="screen-8" class="full-screen remove-me">
+    <div id="screen-smile" class="full-screen remove-me" style="background:white;">
         <div class="smile-grid">
-            <img src="smile1.jpeg" class="smile-img">
-            <img src="smile2.jpeg" class="smile-img" style="transform: translateY(-20px);">
-            <img src="smile3.jpeg" class="smile-img">
+            <img src="smile1.jpeg" class="smile-img" style="transform: rotate(-3deg);">
+            <img src="smile2.jpeg" class="smile-img" style="transform: translateY(-25px);">
+            <img src="smile3.jpeg" class="smile-img" style="transform: rotate(3deg);">
         </div>
-        <h2 class="smile-title">my reason to smile</h2>
-        <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="enter-btn">
-            Let me see that smile in person
+        <h2 style="font-family: serif; color: var(--deep-pink); font-style: italic; font-size: 2.2rem; margin-top: 0;">my reason to smile</h2>
+        <button class="enter-btn" onclick="showFinalMessage()">See the reason why...</button>
+    </div>
+
+    <div id="screen-final" class="full-screen remove-me bg-shoulder">
+        <div class="romantic-screen" style="top: 45%; transform: translateY(-50%); width: 100%; max-width: 400px;">
+            <div class="middle-text" style="width: 85%; padding: 35px; font-size: 1.4rem;">
+                There is only one reason why we should be together... <br><br>
+                because we make each other happy. <br>
+                You complete me.
+            </div>
+        </div>
+        <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="enter-btn" style="position: absolute; bottom: 40px; right: 20px; text-decoration: none;">
+           Come home to me
         </a>
     </div>
 
@@ -167,97 +169,39 @@
     <audio id="music-romantic" src="about_you.mp3"></audio>
     <audio id="music-lavie" src="la_vie_en_rose.mp3"></audio>
     <audio id="music-sexy" src="hey_sexy_lady.mp3"></audio>
-    <audio id="music-final" src="put_your_head_on_my_shoulder.mp3"></audio>
+    <audio id="music-final-song" src="put_your_head_on_my_shoulder.mp3"></audio>
     <audio id="music-soniyo" src="soniyo.mp3"></audio>
 
     <script>
-        // Audio elements
         const audios = {
             ganpat: document.getElementById('music-ganpat'),
             romantic: document.getElementById('music-romantic'),
             lavie: document.getElementById('music-lavie'),
             sexy: document.getElementById('music-sexy'),
-            final: document.getElementById('music-final'),
+            shoulder: document.getElementById('music-final-song'),
             soniyo: document.getElementById('music-soniyo')
         };
 
-        // Loops
-        audios.lavie.addEventListener('timeupdate', function() { if (this.currentTime >= 102) this.currentTime = 9; });
-        audios.sexy.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
-        audios.final.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
-
-        function goToJoke2() {
-            document.getElementById('screen-1').classList.add('remove-me');
-            document.getElementById('screen-2').classList.remove('remove-me');
-            audios.ganpat.currentTime = 71; audios.ganpat.play();
-        }
-
-        function goToBridge() {
-            audios.ganpat.pause();
-            document.getElementById('screen-2').classList.add('remove-me');
-            document.getElementById('screen-3').classList.remove('remove-me');
-            createPetals('bridge-petals');
-        }
-
-        function startExperience() {
-            document.getElementById('screen-3').classList.add('remove-me');
-            const main = document.getElementById('main-content');
-            main.style.display = 'flex';
-            setTimeout(() => { main.style.opacity = '1'; }, 100);
-            audios.romantic.currentTime = 83; audios.romantic.play();
-        }
-
-        function showLaVie() {
-            audios.romantic.pause();
-            audios.lavie.currentTime = 9; audios.lavie.play();
-            document.getElementById('main-content').className = 'bg-lavie';
-            document.getElementById('screen-4').classList.add('screen-hidden');
-            document.getElementById('screen-5').classList.remove('screen-hidden');
-        }
-
-        function showSexy() {
-            audios.lavie.pause();
-            audios.sexy.currentTime = 39; audios.sexy.play();
-            document.getElementById('main-content').className = 'bg-sexy';
-            document.getElementById('screen-5').classList.add('screen-hidden');
-            document.getElementById('screen-sexy').classList.remove('screen-hidden');
-        }
-
-        function showFinalMessage() {
-            audios.sexy.pause();
-            audios.final.currentTime = 39; audios.final.play();
-            document.getElementById('main-content').className = 'bg-shoulder';
-            document.getElementById('screen-sexy').classList.add('screen-hidden');
-            document.getElementById('screen-6').classList.remove('screen-hidden');
-        }
-
-        function showDreamScreen() {
-            audios.final.pause();
-            document.getElementById('main-content').classList.add('remove-me');
-            document.getElementById('screen-7').classList.remove('remove-me');
-            audios.soniyo.currentTime = 26; audios.soniyo.volume = 0; audios.soniyo.play();
-            let vol = 0;
-            let fade = setInterval(() => {
-                if(vol < 0.9) { vol += 0.05; audios.soniyo.volume = vol; }
-                else clearInterval(fade);
-            }, 100);
-        }
-
-        function showSmileScreen() {
-            document.getElementById('screen-7').classList.add('remove-me');
-            document.getElementById('screen-8').classList.remove('remove-me');
-            // Keep Soniyo playing as it fits the "reason to smile" vibe perfectly
-        }
+        function goToJoke2() { document.getElementById('screen-1').classList.add('remove-me'); document.getElementById('screen-2').classList.remove('remove-me'); audios.ganpat.currentTime = 71; audios.ganpat.play(); }
+        function goToBridge() { audios.ganpat.pause(); document.getElementById('screen-2').classList.add('remove-me'); document.getElementById('screen-3').classList.remove('remove-me'); createPetals('bridge-petals'); }
+        function startExperience() { document.getElementById('screen-3').classList.add('remove-me'); const main = document.getElementById('main-content'); main.style.display = 'flex'; setTimeout(() => { main.style.opacity = '1'; }, 100); audios.romantic.currentTime = 83; audios.romantic.play(); }
+        function showLaVie() { audios.romantic.pause(); audios.lavie.currentTime = 9; audios.lavie.play(); document.getElementById('main-content').className = 'bg-lavie'; document.getElementById('screen-4').classList.add('screen-hidden'); document.getElementById('screen-5').classList.remove('screen-hidden'); }
+        function showSexy() { audios.lavie.pause(); audios.sexy.currentTime = 39; audios.sexy.play(); document.getElementById('main-content').className = 'bg-sexy'; document.getElementById('screen-5').classList.add('screen-hidden'); document.getElementById('screen-sexy').classList.remove('screen-hidden'); }
+        function showBridgeToDream() { audios.sexy.pause(); document.getElementById('main-content').classList.add('remove-me'); document.getElementById('screen-dream').classList.remove('remove-me'); audios.soniyo.currentTime = 26; audios.soniyo.play(); }
+        function showSmileScreen() { document.getElementById('screen-dream').classList.add('remove-me'); document.getElementById('screen-smile').classList.remove('remove-me'); }
+        function showFinalMessage() { audios.soniyo.pause(); audios.shoulder.currentTime = 39; audios.shoulder.play(); document.getElementById('screen-smile').classList.add('remove-me'); document.getElementById('screen-final').classList.remove('remove-me'); }
 
         function createPetals(targetId) {
-            const target = document.getElementById(targetId);
-            setInterval(() => {
+            const container = document.getElementById(targetId);
+            const interval = setInterval(() => {
+                if (document.getElementById('screen-3').classList.contains('remove-me')) { clearInterval(interval); return; }
                 const petal = document.createElement('div');
                 petal.className = 'petal';
                 petal.style.left = Math.random() * 100 + 'vw';
                 petal.style.width = Math.random() * 15 + 10 + 'px';
-                petal.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
-                target.appendChild(petal);
+                petal.style.height = petal.style.width;
+                petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+                container.appendChild(petal);
                 setTimeout(() => petal.remove(), 5000);
             }, 300);
         }

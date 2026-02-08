@@ -24,7 +24,6 @@
             z-index: 100; transition: opacity 0.8s ease;
         }
 
-        /* Logic to hide screens properly */
         .remove-me { display: none !important; }
 
         .ganpat-photo {
@@ -36,18 +35,19 @@
             width: 280px; border-radius: 15px; border: 3px solid #444; z-index: 102;
         }
 
-        .warning-text, .shoot-text {
-            color: var(--deep-pink); font-size: 1.3rem; margin-top: 25px;
-            font-weight: bold; text-align: center; z-index: 102;
-            text-transform: uppercase; letter-spacing: 1px; padding: 0 15px;
+        /* Small White Text for Jokes */
+        .joke-text {
+            color: white; font-size: 0.9rem; margin-top: 20px;
+            font-weight: normal; text-align: center; z-index: 102;
+            letter-spacing: 0.5px; padding: 0 20px;
         }
 
         .small-billa { width: 70px; border-radius: 10px; margin-top: 15px; z-index: 102; }
 
         .enter-btn {
-            margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
+            margin-top: 30px; padding: 12px 30px; background: var(--deep-pink);
             color: white; border: none; border-radius: 5px;
-            font-weight: bold; cursor: pointer; font-size: 1rem; z-index: 102;
+            font-weight: bold; cursor: pointer; font-size: 0.9rem; z-index: 102;
         }
 
         .skull-bg {
@@ -55,12 +55,12 @@
             font-size: 2.5rem; opacity: 0.5; overflow: hidden; z-index: 101; pointer-events: none;
         }
 
-        /* --- ROMANTIC FLOW (PHOTO BG) --- */
+        /* --- ROMANTIC FLOW --- */
         #main-content {
             height: 100%; width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('about_you.jpeg');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('about_you.jpeg');
             background-size: cover; background-position: center;
-            display: none; /* Hidden until jokes finish */
+            display: none;
             justify-content: center; align-items: center;
             opacity: 0; transition: opacity 1.5s ease;
         }
@@ -71,13 +71,22 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
+        /* Shifting Final Screen to Top Right */
+        #screen-final {
+            top: 5%;
+            right: 5%;
+            align-items: flex-end;
+            text-align: right;
+            max-width: 300px;
+        }
+
         .screen-hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
 
         .middle-text { 
-            font-size: 1.4rem; color: white; font-weight: bold; 
-            background: rgba(255, 77, 109, 0.7); padding: 30px; 
-            border-radius: 30px; backdrop-filter: blur(8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.5;
+            font-size: 1.2rem; color: white; font-weight: bold; 
+            background: rgba(255, 77, 109, 0.75); padding: 20px; 
+            border-radius: 20px; backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.4;
         }
 
         .arrow-box { margin-top: 30px; cursor: pointer; color: white; }
@@ -85,10 +94,10 @@
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
 
         .gmeet-btn {
-            text-decoration: none; padding: 18px 45px; background: var(--deep-pink);
-            color: white; border-radius: 50px; font-weight: bold;
+            text-decoration: none; padding: 15px 30px; background: var(--deep-pink);
+            color: white; border-radius: 50px; font-weight: bold; font-size: 0.9rem;
             box-shadow: 0 5px 20px rgba(255,77,109,0.4);
-            animation: pulse 2s infinite; display: inline-block;
+            animation: pulse 2s infinite; display: inline-block; margin-top: 15px;
         }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
@@ -108,21 +117,20 @@
     <div id="joke1" class="joke-screen">
         <div class="skull-bg"></div>
         <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
-        <p class="warning-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
+        <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
         <button class="enter-btn" onclick="goToJoke2()">sorry jaan, open to karo</button>
     </div>
 
     <div id="joke2" class="joke-screen remove-me">
         <div class="skull-bg"></div>
         <img src="dont_shoot_me.jpeg" class="primary-img">
-        <p class="shoot-text">please don't shoot me for sending this a little late</p>
-        <img src="mausum_billa.jpeg" class="small-billa">
-        <button class="enter-btn" onclick="startExperience()">Ab to maaf kardo ❤️</button>
+        <p class="joke-text">please don't shoot me for sending this a little late</p>
+        <img src="mausum_billa.png" class="small-billa"> <button class="enter-btn" onclick="startExperience()">Ab to maaf kardo ❤️</button>
     </div>
 
     <div id="main-content">
         <div id="screen-poem" class="screen">
-            <p style="color:white; font-style:italic; margin-bottom:20px;">a little late but i hope I am worth the wait</p>
+            <p style="color:white; font-style:italic; margin-bottom:20px; font-size: 0.8rem;">a little late but i hope I am worth the wait</p>
             <div class="middle-text">
                 Lagta hai hamari khamoshi ko tum berukhi samjh baithi, <br><br>
                 tum kya jano hum toh aaj bhi tumhare intezaar mein har lamahaan guzaar rahe hain.
@@ -138,7 +146,6 @@
                 We make each other happy. <br>
                 You complete me."
             </div>
-            <br>
             <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="gmeet-btn">Click here to complete me</a>
         </div>
     </div>
@@ -148,7 +155,6 @@
     <script>
         const m1 = document.getElementById('music1');
 
-        // Fill skulls in all containers
         function createSkulls() {
             const containers = document.querySelectorAll('.skull-bg');
             containers.forEach(container => {
@@ -165,13 +171,11 @@
         }
         createSkulls();
 
-        // 1. Redirection to Second Joke
         function goToJoke2() {
             document.getElementById('joke1').classList.add('remove-me');
             document.getElementById('joke2').classList.remove('remove-me');
         }
 
-        // 2. Redirection to Romantic Part
         function startExperience() {
             document.getElementById('joke2').style.opacity = '0';
             setTimeout(() => {
@@ -198,7 +202,6 @@
             }, 800);
         }
 
-        // 3. Final Redirection
         function showFinalScreen() {
             document.getElementById('screen-poem').classList.add('screen-hidden');
             document.getElementById('screen-final').classList.remove('screen-hidden');

@@ -19,59 +19,23 @@
             background-color: black;
         }
 
-        /* --- SCREENS --- */
         .full-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 100; transition: opacity 0.8s ease;
         }
 
-        #screen-1 { background-color: black; }
-        #screen-2 { background-color: var(--light-blue); }
-        #screen-3 { background-color: var(--soft-pink); text-align: center; }
-
         .remove-me { display: none !important; }
-
-        .primary-img { 
-            width: auto; height: 55vh; border-radius: 15px; border: 3px solid #444; z-index: 102; object-fit: contain;
-        }
-
-        .ganpat-photo {
-            width: auto; height: 60vh; object-fit: contain; border: 4px solid white; border-radius: 15px; z-index: 102;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .joke-text { color: var(--joke-gray); font-size: 1.4rem; font-weight: bold; text-align: center; }
-        #screen-1 .joke-text { color: #888; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-
-        .bridge-text {
-            font-size: 1.5rem; color: var(--deep-pink); font-style: italic; font-weight: bold;
-            padding: 20px; z-index: 102;
-        }
 
         /* --- BUTTONS & CTAs --- */
         .enter-btn {
             margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
-            color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; z-index: 102;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: center;
+            color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 102;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); text-align: center; text-decoration: none;
+            display: inline-block;
         }
 
-        .pop-cta {
-            margin-top: 25px; cursor: pointer; z-index: 102;
-            display: flex; flex-direction: column; align-items: center;
-            animation: popPulse 2s infinite ease-in-out;
-        }
-
-        .pop-label {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--deep-pink); padding: 15px 25px;
-            border-radius: 50px; font-size: 0.95rem; font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-
-        @keyframes popPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-
-        /* --- ROMANTIC FLOW --- */
+        /* --- ROMANTIC FLOW BASICS --- */
         #main-content {
             height: 100%; width: 100%; display: none;
             justify-content: center; align-items: center;
@@ -91,7 +55,6 @@
 
         #screen-4, #screen-5, #screen-6 { bottom: 40px; right: 20px; } 
         #screen-sexy { top: 50%; left: 50%; transform: translate(-50%, -50%); } 
-
         .screen-hidden { opacity: 0; pointer-events: none; display: none !important; }
 
         .middle-text { 
@@ -101,46 +64,33 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center;
         }
 
+        /* --- SMILE SCREEN (SCREEN 8) --- */
+        #screen-8 { background: white; z-index: 110; }
+        .smile-grid {
+            display: flex; gap: 15px; margin-bottom: 20px;
+            perspective: 1000px;
+        }
+        .smile-img {
+            width: 100px; height: 150px; object-fit: cover;
+            border-radius: 12px; border: 4px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        .smile-img:hover { transform: scale(1.1) rotate(2deg); }
+        .smile-title {
+            font-family: 'Georgia', serif; font-size: 2rem; color: var(--deep-pink);
+            font-style: italic; margin-top: 10px;
+        }
+
         /* --- DREAM SCREEN STYLES --- */
-        #screen-7 {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, #1a1a2e, #16213e);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-
-        .dream-photo-container {
-            display: flex; gap: 20px; margin-bottom: 30px; padding: 10px;
-        }
-
-        .dream-photo {
-            width: 140px; height: 180px; object-fit: cover;
-            border: 5px solid white; border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            transition: transform 0.5s;
-        }
-        .dream-photo:nth-child(1) { transform: rotate(-5deg); }
-        .dream-photo:nth-child(2) { transform: rotate(5deg); }
-
+        .dream-photo-container { display: flex; gap: 20px; margin-bottom: 30px; }
+        .dream-photo { width: 140px; height: 180px; object-fit: cover; border: 5px solid white; border-radius: 10px; }
         .dream-box {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px; padding: 30px; width: 80%;
-            max-width: 320px; text-align: center;
-            box-shadow: 0 0 40px rgba(255, 77, 109, 0.3);
-            animation: dreamFloat 4s infinite ease-in-out;
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px);
+            border-radius: 30px; padding: 30px; width: 80%; text-align: center;
+            animation: dreamFloat 4s infinite ease-in-out; color: white;
         }
-
-        .dream-text {
-            color: white; font-size: 1.3rem; font-style: italic;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
         @keyframes dreamFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        .love-cta { margin-top: 20px; cursor: pointer; color: white; display: flex; flex-direction: column; align-items: center; }
-        .love-symbol { font-size: 3.5rem; color: var(--deep-pink); animation: heartbeat 3s infinite ease-in-out; }
-        @keyframes heartbeat { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 1; } }
 
         .petal {
             position: absolute; background-color: var(--deep-pink);
@@ -153,75 +103,63 @@
 <body>
 
     <div id="screen-1" class="full-screen">
-        <div id="skull-container" style="position:absolute; width:100%; height:100%;"></div>
-        <img src="dont_shoot_me.jpeg" class="primary-img">
-        <p class="joke-text" style="color:#888; margin-top:20px;">please don't shoot me for sending this a little late</p>
+        <img src="dont_shoot_me.jpeg" style="height:55vh; border-radius:15px;">
+        <p style="color:#888;">please don't shoot me for sending this a little late</p>
         <button class="enter-btn" onclick="goToJoke2()">jaan, yaha click karo</button>
     </div>
 
-    <div id="screen-2" class="full-screen remove-me">
-        <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
-        <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
-        <div class="pop-cta" onclick="goToBridge()">
-            <span class="pop-label">maaf kardiya toh yaha click karo, dusro koi option nahi hai</span>
-        </div>
+    <div id="screen-2" class="full-screen remove-me" style="background-color: var(--light-blue);">
+        <img src="ganpat.jpeg" style="height:60vh; border-radius:15px; border:4px solid white;">
+        <p style="font-weight:bold; color:var(--joke-gray);">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
+        <div onclick="goToBridge()" style="cursor:pointer; background:white; padding:15px; border-radius:50px; color:var(--deep-pink); font-weight:bold;">maaf kardiya toh click karo</div>
     </div>
 
-    <div id="screen-3" class="full-screen remove-me">
+    <div id="screen-3" class="full-screen remove-me" style="background-color: var(--soft-pink);">
         <div id="bridge-petals" style="position:absolute; width:100%; height:100%;"></div>
-        <p class="bridge-text">a little late but i hope I am worth the wait</p>
+        <p style="font-style:italic; font-size:1.5rem; color:var(--deep-pink);">a little late but i hope I am worth the wait</p>
         <button class="enter-btn" onclick="startExperience()">click here for love</button>
     </div>
 
     <div id="main-content" class="bg-about-you">
         <div id="screen-4" class="romantic-screen">
-            <div class="middle-text">
-                Lagta hai hamari khamoshi ko tum berukhi samjh baithi, <br><br>
-                tum kya jano hum toh roz tumhare intezaar mein har lamahaan guzaar rahe hain.
-            </div>
-            <div class="love-cta" onclick="showLaVie()">
-                <span class="love-symbol">❤️</span>
-                <span class="cta-label">click here for more love</span>
-            </div>
+            <div class="middle-text">Lagta hai hamari khamoshi ko tum berukhi samjh baithi...</div>
+            <div class="enter-btn" onclick="showLaVie()">click here for more love</div>
         </div>
 
         <div id="screen-5" class="romantic-screen screen-hidden">
-            <div class="middle-text">
-                When I am with you, life really does feel like la vie en rose...
-            </div>
-            <div class="love-cta" onclick="showSexy()">
-                <span class="love-symbol">🌹</span>
-                <span class="cta-label">Hold my hand and lets go ahead together</span>
-            </div>
+            <div class="middle-text">When I am with you, life really does feel like la vie en rose...</div>
+            <div class="enter-btn" onclick="showSexy()">Hold my hand</div>
         </div>
 
         <div id="screen-sexy" class="romantic-screen screen-hidden">
             <div class="middle-text">hey sexy lady you have taken my heart...</div>
-            <div class="love-cta" onclick="showFinalScreen()">
-                <span class="love-symbol">❤️‍🔥</span>
-                <span class="cta-label">click here to give it back</span>
-            </div>
+            <div class="enter-btn" onclick="showFinalMessage()">click to give it back</div>
         </div>
 
         <div id="screen-6" class="romantic-screen screen-hidden">
-            <div class="middle-text">
-                There is only one reason why we should be together... <br>
-                You complete me.
-            </div>
+            <div class="middle-text">There is only one reason why we should be together... You complete me.</div>
             <div class="enter-btn" onclick="showDreamScreen()">Come home to me</div>
         </div>
     </div>
 
-    <div id="screen-7" class="full-screen remove-me">
+    <div id="screen-7" class="full-screen remove-me" style="background:#1a1a2e;">
         <div class="dream-photo-container">
-            <img src="just_you_and_me.jpeg" class="dream-photo">
-            <img src="soniyo.jpeg" class="dream-photo">
+            <img src="just_you_and_me.jpeg" class="dream-photo" style="transform:rotate(-5deg)">
+            <img src="soniyo.jpeg" class="dream-photo" style="transform:rotate(5deg)">
         </div>
-        <div class="dream-box">
-            <p class="dream-text">"kya tum banogi voh haseen sapna jise roz dekhne ko ji karta heh"</p>
+        <div class="dream-box">"kya tum banogi voh haseen sapna jise roz dekhne ko ji karta heh"</div>
+        <button class="enter-btn" onclick="showSmileScreen()">Haa, banungi ❤️</button>
+    </div>
+
+    <div id="screen-8" class="full-screen remove-me">
+        <div class="smile-grid">
+            <img src="smile1.jpeg" class="smile-img">
+            <img src="smile2.jpeg" class="smile-img" style="transform: translateY(-20px);">
+            <img src="smile3.jpeg" class="smile-img">
         </div>
-        <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="enter-btn" style="text-decoration: none; border-radius: 50px;">
-            Haa, banungi ❤️
+        <h2 class="smile-title">my reason to smile</h2>
+        <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="enter-btn">
+            Let me see that smile in person
         </a>
     </div>
 
@@ -233,81 +171,82 @@
     <audio id="music-soniyo" src="soniyo.mp3"></audio>
 
     <script>
-        const mGanpat = document.getElementById('music-ganpat');
-        const mRomantic = document.getElementById('music-romantic');
-        const mLavie = document.getElementById('music-lavie');
-        const mSexy = document.getElementById('music-sexy');
-        const mFinal = document.getElementById('music-final');
-        const mSoniyo = document.getElementById('music-soniyo');
+        // Audio elements
+        const audios = {
+            ganpat: document.getElementById('music-ganpat'),
+            romantic: document.getElementById('music-romantic'),
+            lavie: document.getElementById('music-lavie'),
+            sexy: document.getElementById('music-sexy'),
+            final: document.getElementById('music-final'),
+            soniyo: document.getElementById('music-soniyo')
+        };
 
-        // Loop Logic
-        mLavie.addEventListener('timeupdate', function() { if (this.currentTime >= 102) this.currentTime = 9; });
-        mSexy.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
-        mFinal.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
+        // Loops
+        audios.lavie.addEventListener('timeupdate', function() { if (this.currentTime >= 102) this.currentTime = 9; });
+        audios.sexy.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
+        audios.final.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
 
         function goToJoke2() {
             document.getElementById('screen-1').classList.add('remove-me');
             document.getElementById('screen-2').classList.remove('remove-me');
-            mGanpat.currentTime = 71; mGanpat.volume = 0.8; mGanpat.play();
+            audios.ganpat.currentTime = 71; audios.ganpat.play();
         }
 
         function goToBridge() {
-            mGanpat.pause();
+            audios.ganpat.pause();
             document.getElementById('screen-2').classList.add('remove-me');
             document.getElementById('screen-3').classList.remove('remove-me');
             createPetals('bridge-petals');
         }
 
         function startExperience() {
-            document.getElementById('screen-3').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('screen-3').classList.add('remove-me');
-                const main = document.getElementById('main-content');
-                main.style.display = 'flex';
-                setTimeout(() => { main.style.opacity = '1'; }, 100);
-                mRomantic.currentTime = 83; mRomantic.play();
-            }, 800);
+            document.getElementById('screen-3').classList.add('remove-me');
+            const main = document.getElementById('main-content');
+            main.style.display = 'flex';
+            setTimeout(() => { main.style.opacity = '1'; }, 100);
+            audios.romantic.currentTime = 83; audios.romantic.play();
         }
 
         function showLaVie() {
-            mRomantic.pause();
-            mLavie.currentTime = 9; mLavie.play();
+            audios.romantic.pause();
+            audios.lavie.currentTime = 9; audios.lavie.play();
             document.getElementById('main-content').className = 'bg-lavie';
             document.getElementById('screen-4').classList.add('screen-hidden');
             document.getElementById('screen-5').classList.remove('screen-hidden');
         }
 
         function showSexy() {
-            mLavie.pause();
-            mSexy.currentTime = 39; mSexy.play();
+            audios.lavie.pause();
+            audios.sexy.currentTime = 39; audios.sexy.play();
             document.getElementById('main-content').className = 'bg-sexy';
             document.getElementById('screen-5').classList.add('screen-hidden');
             document.getElementById('screen-sexy').classList.remove('screen-hidden');
         }
 
-        function showFinalScreen() {
-            mSexy.pause();
-            mFinal.currentTime = 39; mFinal.play();
+        function showFinalMessage() {
+            audios.sexy.pause();
+            audios.final.currentTime = 39; audios.final.play();
             document.getElementById('main-content').className = 'bg-shoulder';
             document.getElementById('screen-sexy').classList.add('screen-hidden');
             document.getElementById('screen-6').classList.remove('screen-hidden');
         }
 
         function showDreamScreen() {
-            mFinal.pause();
+            audios.final.pause();
             document.getElementById('main-content').classList.add('remove-me');
-            const s7 = document.getElementById('screen-7');
-            s7.classList.remove('remove-me');
-            
-            // Soniyo Music with Fade In
-            mSoniyo.currentTime = 26;
-            mSoniyo.volume = 0;
-            mSoniyo.play();
+            document.getElementById('screen-7').classList.remove('remove-me');
+            audios.soniyo.currentTime = 26; audios.soniyo.volume = 0; audios.soniyo.play();
             let vol = 0;
-            let fadeIn = setInterval(() => {
-                if (vol < 0.9) { vol += 0.05; mSoniyo.volume = vol; }
-                else { clearInterval(fadeIn); }
-            }, 100); // Fades in over 2 seconds
+            let fade = setInterval(() => {
+                if(vol < 0.9) { vol += 0.05; audios.soniyo.volume = vol; }
+                else clearInterval(fade);
+            }, 100);
+        }
+
+        function showSmileScreen() {
+            document.getElementById('screen-7').classList.add('remove-me');
+            document.getElementById('screen-8').classList.remove('remove-me');
+            // Keep Soniyo playing as it fits the "reason to smile" vibe perfectly
         }
 
         function createPetals(targetId) {

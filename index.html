@@ -27,6 +27,7 @@
 
         .remove-me { display: none !important; }
 
+        /* --- BUTTONS --- */
         .enter-btn {
             padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 102;
@@ -35,11 +36,13 @@
         }
         .btn-white { background: white !important; color: var(--deep-pink) !important; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); }
 
+        /* --- BACKGROUNDS --- */
         .bg-about-you { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('about_you.jpeg'); background-size: cover; background-position: center; }
         .bg-lavie { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('la_vie_en_rose.jpeg'); background-size: cover; background-position: center; }
         .bg-sexy { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hey_sexy_lady.jpeg'); background-size: cover; background-position: center; }
         .bg-shoulder { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('put_your_head_on_my_shoulder.jpeg'); background-size: cover; background-position: center; }
 
+        /* --- CLUSTERS --- */
         .br-cluster {
             position: absolute; bottom: 40px; right: 20px;
             width: 90%; max-width: 350px;
@@ -54,6 +57,7 @@
             text-align: center; margin-bottom: 20px;
         }
 
+        /* --- ANIMATIONS --- */
         .petal { position: absolute; background-color: var(--deep-pink); border-radius: 150% 0 150% 0; opacity: 0.6; pointer-events: none; animation: fall linear infinite; z-index: 101; }
         @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
         @keyframes firePulse { from { transform: scale(1); } to { transform: scale(1.2); } }
@@ -120,9 +124,9 @@
     </div>
 
     <div id="screen-foodie" class="full-screen remove-me">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <img src="foodie1.jpeg" style="width: 100%; height: 50%; object-fit: cover;">
-            <img src="foodie2.jpeg" style="width: 100%; height: 50%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: row;">
+            <img src="foodie1.jpeg" style="width: 50%; height: 100%; object-fit: cover;">
+            <img src="foodie2.jpeg" style="width: 50%; height: 100%; object-fit: cover;">
         </div>
         <div style="position: absolute; top: 40px; left: 0; width: 100%; text-align: center; z-index: 105;">
             <div style="color: white; font-weight: bold; font-size: 1.1rem; text-shadow: 2px 2px 12px rgba(0,0,0,1);">bhukhi ko khilake punya kama raha hu</div>
@@ -145,12 +149,12 @@
     </div>
 
     <div id="screen-dream" class="full-screen remove-me">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <img src="just_you_and_me.jpeg" style="width: 100%; height: 50%; object-fit: cover;">
-            <img src="soniyo.jpeg" style="width: 100%; height: 50%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: row;">
+            <img src="just_you_and_me.jpeg" style="width: 50%; height: 100%; object-fit: cover;">
+            <img src="soniyo.jpeg" style="width: 50%; height: 100%; object-fit: cover;">
         </div>
         <div style="z-index: 110; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; pointer-events: none;">
-            <div style="background: rgba(26, 26, 46, 0.7); backdrop-filter: blur(8px); border-radius: 30px; padding: 25px; width: 80%; text-align: center; color: white; margin-bottom: 20px; text-shadow: 1px 1px 5px black; pointer-events: auto;">
+            <div style="background: rgba(26, 26, 46, 0.75); backdrop-filter: blur(8px); border-radius: 30px; padding: 25px; width: 80%; max-width: 450px; text-align: center; color: white; margin-bottom: 20px; text-shadow: 1px 1px 5px black; pointer-events: auto;">
                 kya tum banogi voh haseen sapna jise roz dekhne ko ji karta heh
             </div>
             <button class="enter-btn" onclick="showSmileScreen()" style="pointer-events: auto;">Haa, banungi ❤️</button>

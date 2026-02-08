@@ -34,6 +34,7 @@
             box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); text-align: center; text-decoration: none;
             display: inline-block; transition: transform 0.2s;
         }
+        .enter-btn:active { transform: scale(0.95); }
         .btn-white { background: white !important; color: var(--deep-pink) !important; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); }
 
         /* --- BACKGROUNDS --- */
@@ -60,7 +61,7 @@
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
+            grid-template-rows: 50vh 50vh; /* Ensures 4 images fill exactly 100% height */
             width: 100vw;
             height: 100vh;
             position: absolute;
@@ -70,7 +71,7 @@
         .grid-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Prevents stretching */
             display: block;
         }
 
@@ -95,8 +96,6 @@
             <span style="position: absolute; top: 80%; left: 20%; font-size: 45px;">💀</span>
             <span style="position: absolute; top: 85%; left: 50%; font-size: 28px;">💀</span>
             <span style="position: absolute; top: 75%; left: 80%; font-size: 40px;">💀</span>
-            <span style="position: absolute; top: 90%; left: 5%; font-size: 35px;">💀</span>
-            <span style="position: absolute; top: 45%; left: 45%; font-size: 20px;">💀</span>
         </div>
         <img src="dont_shoot_me.jpeg" style="height:50vh; border-radius:15px; z-index:10;">
         <div style="display: flex; align-items: center; margin-top: 25px; z-index:10;">
@@ -180,12 +179,12 @@
 
     <div id="screen-smile" class="full-screen remove-me">
         <div class="grid-container">
-            <img src="under_the_pink_tree.jpeg">
-            <img src="smile1.jpeg">
-            <img src="smile2.jpeg">
-            <img src="smile3.jpeg">
+            <img src="under_the_pink_tree.jpeg" alt="Pink Tree">
+            <img src="smile1.jpeg" alt="Tanu 1">
+            <img src="smile2.jpeg" alt="Tanu 2">
+            <img src="smile3.jpeg" alt="Tanu 3">
         </div>
-        <div style="position: relative; z-index: 110; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 100%; padding-bottom: 50px; pointer-events: none;">
+        <div style="position: absolute; bottom: 0; left: 0; z-index: 110; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 40%; width: 100%; padding-bottom: 50px; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
             <h2 style="font-family: serif; color: white; font-style: italic; font-size: 2.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); margin-bottom: 20px;">my reason to smile</h2>
             <button class="enter-btn" onclick="showFinalMessage()" style="pointer-events: auto;">Can I tell you a secret?</button>
         </div>
@@ -211,7 +210,18 @@
 
     <script>
         const a = { g: document.getElementById('m-g'), r: document.getElementById('m-r'), l: document.getElementById('m-l'), s: document.getElementById('m-s'), so: document.getElementById('m-so'), k: document.getElementById('m-k'), d: document.getElementById('m-d') };
-        function fadeIn(aud, start) { aud.currentTime = start; aud.volume = 0; aud.play(); let v = 0; const int = setInterval(() => { if (v < 1) { v += 0.05; aud.volume = Math.min(v, 1); } else clearInterval(int); }, 150); }
+        
+        function fadeIn(aud, start) { 
+            aud.currentTime = start; 
+            aud.volume = 0; 
+            aud.play(); 
+            let v = 0; 
+            const int = setInterval(() => { 
+                if (v < 1) { v += 0.05; aud.volume = Math.min(v, 1); } 
+                else clearInterval(int); 
+            }, 150); 
+        }
+
         a.so.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 26; });
         
         function goToJoke2() { document.getElementById('screen-1').classList.add('remove-me'); document.getElementById('screen-2').classList.remove('remove-me'); a.g.currentTime = 71; a.g.play(); }
@@ -223,7 +233,21 @@
         function showBridgeToDream() { a.s.pause(); document.getElementById('screen-sexy').classList.add('remove-me'); document.getElementById('screen-dream').classList.remove('remove-me'); a.so.currentTime = 26; a.so.play(); }
         function showSmileScreen() { a.so.pause(); document.getElementById('screen-dream').classList.add('remove-me'); document.getElementById('screen-smile').classList.remove('remove-me'); fadeIn(a.k, 46); }
         function showFinalMessage() { a.k.pause(); document.getElementById('screen-smile').classList.add('remove-me'); document.getElementById('screen-final').classList.remove('remove-me'); fadeIn(a.d, 34); }
-        function createPetals(id) { const c = document.getElementById(id); const intv = setInterval(() => { if (document.getElementById('screen-3').classList.contains('remove-me')) { clearInterval(intv); return; } const p = document.createElement('div'); p.className = 'petal'; p.style.left = Math.random() * 100 + 'vw'; p.style.width = Math.random() * 15 + 10 + 'px'; p.style.height = p.style.width; p.style.animationDuration = Math.random() * 3 + 2 + 's'; c.appendChild(p); setTimeout(() => p.remove(), 5000); }, 300); }
+        
+        function createPetals(id) { 
+            const c = document.getElementById(id); 
+            const intv = setInterval(() => { 
+                if (document.getElementById('screen-3').classList.contains('remove-me')) { clearInterval(intv); return; } 
+                const p = document.createElement('div'); 
+                p.className = 'petal'; 
+                p.style.left = Math.random() * 100 + 'vw'; 
+                p.style.width = Math.random() * 15 + 10 + 'px'; 
+                p.style.height = p.style.width; 
+                p.style.animationDuration = Math.random() * 3 + 2 + 's'; 
+                c.appendChild(p); 
+                setTimeout(() => p.remove(), 5000); 
+            }, 300); 
+        }
     </script>
 </body>
 </html>

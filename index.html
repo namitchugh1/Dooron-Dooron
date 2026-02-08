@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Surprise for Tanu ❤️</title>
+    <title>For Tanu ❤️</title>
     <style>
         :root {
             --deep-pink: #ff4d6d;
@@ -16,8 +16,8 @@
             background-color: black;
         }
 
-        /* --- SCREEN 0: THE JOKE --- */
-        #starter-screen {
+        /* --- JOKE SCREENS (BLACK BG) --- */
+        .joke-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: black;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -29,11 +29,17 @@
             object-fit: contain; border: 3px solid #333; border-radius: 10px; z-index: 102;
         }
 
-        .warning-text {
+        .primary-img { 
+            width: 280px; border-radius: 15px; border: 3px solid #444; z-index: 102;
+        }
+
+        .warning-text, .shoot-text {
             color: var(--deep-pink); font-size: 1.3rem; margin-top: 25px;
             font-weight: bold; text-align: center; z-index: 102;
             text-transform: uppercase; letter-spacing: 1px; padding: 0 15px;
         }
+
+        .small-billa { width: 70px; border-radius: 10px; margin-top: 15px; z-index: 102; }
 
         .enter-btn {
             margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
@@ -46,12 +52,11 @@
             font-size: 2.5rem; opacity: 0.5; overflow: hidden; z-index: 101; pointer-events: none;
         }
 
-        /* --- ROMANTIC FLOW --- */
+        /* --- ROMANTIC FLOW (PHOTO BG) --- */
         #main-content {
             height: 100%; width: 100%;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('about_you.jpeg');
-            background-size: cover;
-            background-position: center;
+            background-size: cover; background-position: center;
             display: flex; justify-content: center; align-items: center;
             opacity: 0; transition: opacity 1.5s ease;
         }
@@ -62,7 +67,8 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        .hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
+        .hidden { display: none !important; }
+        .invisible { opacity: 0; transform: scale(0.9); pointer-events: none; }
 
         .middle-text { 
             font-size: 1.4rem; color: white; font-weight: bold; 
@@ -71,12 +77,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.5;
         }
 
-        /* Screen 2: Photos Layout */
-        .primary-img { width: 280px; border-radius: 15px; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .shoot-text { color: white; font-weight: bold; margin: 20px 0; text-shadow: 2px 2px 8px black; font-size: 1.2rem; }
-        .small-billa { width: 70px; border-radius: 10px; border: 2px solid white; }
-
-        .arrow-box { margin-top: 30px; cursor: pointer; color: white; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        .arrow-box { margin-top: 30px; cursor: pointer; color: white; }
         .arrow { font-size: 3rem; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
 
@@ -101,11 +102,19 @@
 </head>
 <body>
 
-    <div id="starter-screen">
-        <div class="skull-bg" id="skull-container"></div>
+    <div id="joke1" class="joke-screen">
+        <div class="skull-bg" class="skull-container"></div>
         <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
         <p class="warning-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
-        <button class="enter-btn" onclick="startExperience()">sorry jaan, open to karo</button>
+        <button class="enter-btn" onclick="goToJoke2()">sorry jaan, open to karo</button>
+    </div>
+
+    <div id="joke2" class="joke-screen hidden">
+        <div class="skull-bg" class="skull-container"></div>
+        <img src="dont_shoot_me.jpeg" class="primary-img">
+        <p class="shoot-text">please don't shoot me for sending this a little late</p>
+        <img src="mausum_billa.jpeg" class="small-billa">
+        <button class="enter-btn" onclick="startExperience()">Ab to maaf kardo ❤️</button>
     </div>
 
     <div id="main-content">
@@ -120,16 +129,7 @@
             </div>
         </div>
 
-        <div id="screen2" class="screen hidden">
-            <img src="dont_shoot_me.jpeg" class="primary-img">
-            <p class="shoot-text">please don't shoot me for sending this a little late</p>
-            <img src="mausum_billa.jpeg" class="small-billa">
-            <div class="arrow-box" onclick="showScreen(3)">
-                <div class="arrow">➔</div>
-            </div>
-        </div>
-
-        <div id="screen3" class="screen hidden">
+        <div id="screen2" class="screen invisible">
             <p class="middle-text">
                 "There is only one reason why we should be together... <br><br>
                 We make each other happy. <br>
@@ -146,5 +146,67 @@
         const m1 = document.getElementById('music1');
 
         function createSkulls() {
-            const container = document.getElementById('skull-container');
-            for(let i=0
+            const containers = document.querySelectorAll('.skull-bg');
+            containers.forEach(container => {
+                for(let i=0; i<60; i++) {
+                    const skull = document.createElement('div');
+                    skull.innerHTML = '💀';
+                    skull.style.position = 'absolute';
+                    skull.style.left = Math.random() * 100 + 'vw';
+                    skull.style.top = Math.random() * 100 + 'vh';
+                    skull.style.opacity = '0.5';
+                    container.appendChild(skull);
+                }
+            });
+        }
+        createSkulls();
+
+        function goToJoke2() {
+            document.getElementById('joke1').classList.add('hidden');
+            document.getElementById('joke2').classList.remove('hidden');
+        }
+
+        function startExperience() {
+            document.getElementById('joke2').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('joke2').style.display = 'none';
+                document.getElementById('main-content').style.opacity = '1';
+                
+                m1.currentTime = 83; 
+                m1.volume = 0;
+                m1.play();
+                
+                let vol = 0;
+                let volumeInterval = setInterval(() => {
+                    if (vol < 0.7) {
+                        vol += 0.05;
+                        m1.volume = vol;
+                    } else {
+                        clearInterval(volumeInterval);
+                    }
+                }, 200);
+
+                createPetals();
+            }, 800);
+        }
+
+        function showScreen(num) {
+            document.getElementById('screen1').classList.add('invisible');
+            document.getElementById('screen2').classList.remove('invisible');
+        }
+
+        function createPetals() {
+            setInterval(() => {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.width = Math.random() * 15 + 10 + 'px';
+                petal.style.height = petal.style.width;
+                petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.getElementById('main-content').appendChild(petal);
+                setTimeout(() => petal.remove(), 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>

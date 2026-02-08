@@ -41,30 +41,40 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
+        .joke-text-container {
+            display: flex; align-items: center; justify-content: center;
+            flex-wrap: wrap; margin-top: 25px; padding: 0 20px; z-index: 102;
+        }
+
         .joke-text {
-            color: var(--joke-gray); font-size: 1.4rem; margin-top: 25px;
-            font-weight: bold; text-align: center; z-index: 102; padding: 0 20px;
+            color: var(--joke-gray); font-size: 1.4rem;
+            font-weight: bold; text-align: center;
         }
         
         #screen-1 .joke-text { color: #888; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+        .inline-billa { 
+            width: 45px; height: auto; border-radius: 8px; 
+            margin-left: 10px; transform: rotate(5deg);
+        }
 
         .bridge-text {
             font-size: 1.5rem; color: var(--deep-pink); font-style: italic; font-weight: bold;
             padding: 20px; z-index: 102; animation: fadeIn 2s ease-in;
         }
 
-        .small-billa { width: 70px; border-radius: 10px; margin-top: 15px; z-index: 102; }
-
         .enter-btn {
             margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; z-index: 102;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         /* --- ROMANTIC FLOW --- */
         #main-content {
             height: 100%; width: 100%; display: none;
             justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 1.5s ease;
+            opacity: 0; 
+            transition: opacity 3s ease-in-out; 
             background-size: cover; background-position: center;
         }
 
@@ -73,35 +83,43 @@
 
         .romantic-screen {
             position: absolute; width: 90%; max-width: 500px;
-            transition: all 0.8s ease; display: flex; flex-direction: column;
+            transition: all 1s ease; 
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
         }
 
-        #screen-4 { top: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
-        #screen-5 { bottom: 40px; right: 20px; align-items: flex-end; text-align: right; max-width: 320px; }
-
-        .screen-hidden { opacity: 0; transform: scale(0.9); pointer-events: none; display: none; }
+        .screen-hidden { opacity: 0; transform: translate(-50%, -40%) scale(0.9) !important; pointer-events: none; display: none; }
 
         .middle-text { 
             font-size: 1.2rem; color: white; font-weight: bold; 
-            background: rgba(255, 77, 109, 0.8); padding: 20px; 
-            border-radius: 20px; backdrop-filter: blur(8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.4;
+            background: rgba(255, 77, 109, 0.85); 
+            padding: 30px; border-radius: 20px; backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.6;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 180px; width: 100%; box-sizing: border-box;
+            text-align: center;
         }
 
-        .love-cta { margin-top: 25px; cursor: pointer; color: white; text-align: center; }
+        .love-cta { 
+            margin-top: 35px; 
+            cursor: pointer; 
+            color: white; 
+            display: flex; flex-direction: column; align-items: center;
+        }
+
         .love-symbol { 
             font-size: 3.5rem; color: var(--deep-pink); 
             animation: heartbeat 3s infinite ease-in-out; 
             display: block; filter: drop-shadow(0 0 10px white); 
+            margin-bottom: 5px;
         }
-        .cta-label { font-size: 0.8rem; font-weight: bold; font-style: italic; text-shadow: 1px 1px 4px black; }
+        .cta-label { font-size: 0.85rem; font-weight: bold; font-style: italic; text-shadow: 2px 2px 5px black; }
 
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.15); opacity: 1; }
         }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .petal {
             position: absolute; background-color: var(--deep-pink);
@@ -116,9 +134,11 @@
     <div id="screen-1" class="full-screen">
         <div id="skull-container" style="position:absolute; width:100%; height:100%;"></div>
         <img src="dont_shoot_me.jpeg" class="primary-img">
-        <p class="joke-text">please don't shoot me for sending this a little late</p>
-        <img src="mausum_billa.png" class="small-billa">
-        <button class="enter-btn" onclick="goToJoke2()">jaan, click toh karo</button>
+        <div class="joke-text-container">
+            <p class="joke-text">please don't shoot me for sending this a little late</p>
+            <img src="mausum_billa.png" class="inline-billa">
+        </div>
+        <button class="enter-btn" onclick="goToJoke2()">jaan, yaha click karo</button>
     </div>
 
     <div id="screen-2" class="full-screen remove-me">
@@ -130,7 +150,7 @@
     <div id="screen-3" class="full-screen remove-me">
         <div id="bridge-petals" style="position:absolute; width:100%; height:100%;"></div>
         <p class="bridge-text">a little late but i hope I am worth the wait</p>
-        <button class="enter-btn" onclick="startExperience()">See why...</button>
+        <button class="enter-btn" onclick="startExperience()">click here for love</button>
     </div>
 
     <div id="main-content" class="bg-about-you">
@@ -147,12 +167,12 @@
 
         <div id="screen-5" class="romantic-screen screen-hidden">
             <div class="middle-text">
-                "There is only one reason why we should be together... <br><br>
+                There is only one reason why we should be together... <br><br>
                 We make each other happy. <br>
-                You complete me."
+                You complete me.
             </div>
-            <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="gmeet-btn" 
-               style="text-decoration: none; padding: 18px 45px; background: var(--deep-pink); color: white; border-radius: 50px; font-weight: bold; margin-top: 25px; display: inline-block;">
+            <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="enter-btn" 
+               style="text-decoration: none; border-radius: 50px;">
                Click here to complete me
             </a>
         </div>
@@ -203,7 +223,7 @@
                 document.getElementById('screen-3').classList.add('remove-me');
                 const main = document.getElementById('main-content');
                 main.style.display = 'flex';
-                setTimeout(() => { main.style.opacity = '1'; }, 50);
+                setTimeout(() => { main.style.opacity = '1'; }, 100);
                 mRomantic.currentTime = 83; mRomantic.volume = 0.7; mRomantic.play();
                 createPetals('main-content');
             }, 800);

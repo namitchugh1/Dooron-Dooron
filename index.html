@@ -41,56 +41,35 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        .joke-text-container {
-            display: flex; align-items: center; justify-content: center;
-            flex-wrap: wrap; margin-top: 25px; padding: 0 20px; z-index: 102;
-        }
-
-        .joke-text {
-            color: var(--joke-gray); font-size: 1.4rem;
-            font-weight: bold; text-align: center;
-        }
-        
+        .joke-text { color: var(--joke-gray); font-size: 1.4rem; font-weight: bold; text-align: center; }
         #screen-1 .joke-text { color: #888; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-
-        .inline-billa { 
-            width: 45px; height: auto; border-radius: 8px; 
-            margin-left: 10px; transform: rotate(5deg);
-        }
 
         .bridge-text {
             font-size: 1.5rem; color: var(--deep-pink); font-style: italic; font-weight: bold;
-            padding: 20px; z-index: 102; animation: fadeIn 2s ease-in;
+            padding: 20px; z-index: 102;
         }
 
         /* --- BUTTONS & CTAs --- */
         .enter-btn {
             margin-top: 30px; padding: 15px 35px; background: var(--deep-pink);
             color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; z-index: 102;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            text-align: center; max-width: 80%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: center;
         }
 
         .pop-cta {
             margin-top: 25px; cursor: pointer; z-index: 102;
             display: flex; flex-direction: column; align-items: center;
-            transition: transform 0.3s ease;
             animation: popPulse 2s infinite ease-in-out;
         }
 
-        .pop-icon { font-size: 3rem; margin-bottom: 5px; }
         .pop-label {
             background: rgba(255, 255, 255, 0.9);
-            color: var(--deep-pink); padding: 10px 20px;
-            border-radius: 50px; font-size: 0.9rem; font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;
-            max-width: 250px;
+            color: var(--deep-pink); padding: 15px 25px;
+            border-radius: 50px; font-size: 0.95rem; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
-        @keyframes popPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
+        @keyframes popPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
         /* --- ROMANTIC FLOW --- */
         #main-content {
@@ -107,14 +86,11 @@
 
         .romantic-screen {
             position: absolute; width: 90%; max-width: 350px;
-            transition: all 1s ease; 
-            display: flex; flex-direction: column; align-items: center;
+            transition: all 1s ease; display: flex; flex-direction: column; align-items: center;
         }
 
-        /* Positions */
-        #screen-4, #screen-5 { top: 40px; right: 20px; } 
-        #screen-sexy { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* Center for impact */
-        #screen-6 { bottom: 40px; right: 20px; }
+        #screen-4, #screen-5, #screen-6 { bottom: 40px; right: 20px; } 
+        #screen-sexy { top: 50%; left: 50%; transform: translate(-50%, -50%); } 
 
         .screen-hidden { opacity: 0; pointer-events: none; display: none !important; }
 
@@ -122,37 +98,56 @@
             font-size: 1.2rem; color: white; font-weight: bold; 
             background: rgba(255, 77, 109, 0.85); 
             padding: 25px; border-radius: 20px; backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); line-height: 1.6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center;
+        }
+
+        /* --- DREAM SCREEN STYLES --- */
+        #screen-7 {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; width: 100%; box-sizing: border-box;
         }
 
-        .love-cta { 
-            margin-top: 20px; cursor: pointer; color: white; 
-            display: flex; flex-direction: column; align-items: center;
+        .dream-photo-container {
+            display: flex; gap: 20px; margin-bottom: 30px; padding: 10px;
         }
 
-        .love-symbol { 
-            font-size: 3.5rem; color: var(--deep-pink); 
-            animation: heartbeat 3s infinite ease-in-out; 
-            display: block; filter: drop-shadow(0 0 10px white); 
-            margin-bottom: 5px;
+        .dream-photo {
+            width: 140px; height: 180px; object-fit: cover;
+            border: 5px solid white; border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.5s;
+        }
+        .dream-photo:nth-child(1) { transform: rotate(-5deg); }
+        .dream-photo:nth-child(2) { transform: rotate(5deg); }
+
+        .dream-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px; padding: 30px; width: 80%;
+            max-width: 320px; text-align: center;
+            box-shadow: 0 0 40px rgba(255, 77, 109, 0.3);
+            animation: dreamFloat 4s infinite ease-in-out;
         }
 
-        .rose-glow { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)); }
-        .cta-label { font-size: 0.85rem; font-weight: bold; font-style: italic; text-shadow: 2px 2px 5px black; }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.15); opacity: 1; }
+        .dream-text {
+            color: white; font-size: 1.3rem; font-style: italic;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
+
+        @keyframes dreamFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .love-cta { margin-top: 20px; cursor: pointer; color: white; display: flex; flex-direction: column; align-items: center; }
+        .love-symbol { font-size: 3.5rem; color: var(--deep-pink); animation: heartbeat 3s infinite ease-in-out; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 1; } }
 
         .petal {
             position: absolute; background-color: var(--deep-pink);
             border-radius: 150% 0 150% 0; opacity: 0.6;
             pointer-events: none; animation: fall linear infinite; z-index: 101;
         }
-        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+        @keyframes fall { 0% { transform: translateY(-10vh); } 100% { transform: translateY(110vh); } }
     </style>
 </head>
 <body>
@@ -160,10 +155,7 @@
     <div id="screen-1" class="full-screen">
         <div id="skull-container" style="position:absolute; width:100%; height:100%;"></div>
         <img src="dont_shoot_me.jpeg" class="primary-img">
-        <div class="joke-text-container">
-            <p class="joke-text">please don't shoot me for sending this a little late</p>
-            <img src="mausum_billa.png" class="inline-billa">
-        </div>
+        <p class="joke-text" style="color:#888; margin-top:20px;">please don't shoot me for sending this a little late</p>
         <button class="enter-btn" onclick="goToJoke2()">jaan, yaha click karo</button>
     </div>
 
@@ -171,7 +163,6 @@
         <img src="ganpat.jpeg" alt="Ganpat" class="ganpat-photo">
         <p class="joke-text">Yeh sab kya bhej rahe ho pity kar dungi tumhari</p>
         <div class="pop-cta" onclick="goToBridge()">
-            <span class="pop-icon">🙏</span>
             <span class="pop-label">maaf kardiya toh yaha click karo, dusro koi option nahi hai</span>
         </div>
     </div>
@@ -196,18 +187,16 @@
 
         <div id="screen-5" class="romantic-screen screen-hidden">
             <div class="middle-text">
-                When I am with you, life really does feel like la vie en rose - like the whole world is warmer and brighter
+                When I am with you, life really does feel like la vie en rose...
             </div>
             <div class="love-cta" onclick="showSexy()">
-                <span class="love-symbol rose-glow">🌹</span>
+                <span class="love-symbol">🌹</span>
                 <span class="cta-label">Hold my hand and lets go ahead together</span>
             </div>
         </div>
 
         <div id="screen-sexy" class="romantic-screen screen-hidden">
-            <div class="middle-text">
-                hey sexy lady you have taken my heart, please give it back
-            </div>
+            <div class="middle-text">hey sexy lady you have taken my heart...</div>
             <div class="love-cta" onclick="showFinalScreen()">
                 <span class="love-symbol">❤️‍🔥</span>
                 <span class="cta-label">click here to give it back</span>
@@ -216,61 +205,50 @@
 
         <div id="screen-6" class="romantic-screen screen-hidden">
             <div class="middle-text">
-                There is only one reason why we should be together... <br><br>
-                We make each other happy. <br>
+                There is only one reason why we should be together... <br>
                 You complete me.
             </div>
-            <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="enter-btn" 
-               style="text-decoration: none; border-radius: 50px;">
-               Click here to complete me
-            </a>
+            <div class="enter-btn" onclick="showDreamScreen()">Come home to me</div>
         </div>
     </div>
 
-    <audio id="music-ganpat" src="ganpat.mp3" preload="auto"></audio>
-    <audio id="music-romantic" src="about_you.mp3" loop preload="auto"></audio>
-    <audio id="music-lavie" src="la_vie_en_rose.mp3" preload="auto"></audio>
-    <audio id="music-sexy" src="hey_sexy_lady.mp3" preload="auto"></audio>
+    <div id="screen-7" class="full-screen remove-me">
+        <div class="dream-photo-container">
+            <img src="just_you_and_me.jpeg" class="dream-photo">
+            <img src="soniyo.jpeg" class="dream-photo">
+        </div>
+        <div class="dream-box">
+            <p class="dream-text">"kya tum banogi voh haseen sapna jise roz dekhne ko ji karta heh"</p>
+        </div>
+        <a href="https://meet.google.com/vdy-ouok-wvw" target="_blank" class="enter-btn" style="text-decoration: none; border-radius: 50px;">
+            Haa, banungi ❤️
+        </a>
+    </div>
+
+    <audio id="music-ganpat" src="ganpat.mp3"></audio>
+    <audio id="music-romantic" src="about_you.mp3"></audio>
+    <audio id="music-lavie" src="la_vie_en_rose.mp3"></audio>
+    <audio id="music-sexy" src="hey_sexy_lady.mp3"></audio>
+    <audio id="music-final" src="put_your_head_on_my_shoulder.mp3"></audio>
+    <audio id="music-soniyo" src="soniyo.mp3"></audio>
 
     <script>
         const mGanpat = document.getElementById('music-ganpat');
         const mRomantic = document.getElementById('music-romantic');
         const mLavie = document.getElementById('music-lavie');
         const mSexy = document.getElementById('music-sexy');
+        const mFinal = document.getElementById('music-final');
+        const mSoniyo = document.getElementById('music-soniyo');
 
-        // Custom Loop for La Vie En Rose
-        mLavie.addEventListener('timeupdate', function() {
-            if (this.currentTime >= 102) { this.currentTime = 9; }
-        });
-
-        // Custom Loop for Hey Sexy Lady: 39s to 95s (1m 35s)
-        mSexy.addEventListener('timeupdate', function() {
-            if (this.currentTime >= 95) { this.currentTime = 39; }
-        });
-
-        function createSkulls() {
-            const container = document.getElementById('skull-container');
-            for(let i=0; i<40; i++) {
-                const skull = document.createElement('div');
-                skull.innerHTML = '💀';
-                skull.style.position = 'absolute';
-                skull.style.left = Math.random() * 100 + 'vw';
-                skull.style.top = Math.random() * 100 + 'vh';
-                skull.style.opacity = '0.4';
-                container.appendChild(skull);
-            }
-        }
-        createSkulls();
+        // Loop Logic
+        mLavie.addEventListener('timeupdate', function() { if (this.currentTime >= 102) this.currentTime = 9; });
+        mSexy.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
+        mFinal.addEventListener('timeupdate', function() { if (this.currentTime >= 95) this.currentTime = 39; });
 
         function goToJoke2() {
             document.getElementById('screen-1').classList.add('remove-me');
             document.getElementById('screen-2').classList.remove('remove-me');
-            mGanpat.currentTime = 71; mGanpat.volume = 0; mGanpat.play();
-            let vol = 0;
-            let fadeGanpat = setInterval(() => {
-                if (vol < 0.8) { vol += 0.05; mGanpat.volume = vol; } 
-                else { clearInterval(fadeGanpat); }
-            }, 200);
+            mGanpat.currentTime = 71; mGanpat.volume = 0.8; mGanpat.play();
         }
 
         function goToBridge() {
@@ -287,16 +265,14 @@
                 const main = document.getElementById('main-content');
                 main.style.display = 'flex';
                 setTimeout(() => { main.style.opacity = '1'; }, 100);
-                mRomantic.currentTime = 83; mRomantic.volume = 0.7; mRomantic.play();
+                mRomantic.currentTime = 83; mRomantic.play();
             }, 800);
         }
 
         function showLaVie() {
             mRomantic.pause();
             mLavie.currentTime = 9; mLavie.play();
-            const main = document.getElementById('main-content');
-            main.classList.remove('bg-about-you');
-            main.classList.add('bg-lavie');
+            document.getElementById('main-content').className = 'bg-lavie';
             document.getElementById('screen-4').classList.add('screen-hidden');
             document.getElementById('screen-5').classList.remove('screen-hidden');
         }
@@ -304,31 +280,43 @@
         function showSexy() {
             mLavie.pause();
             mSexy.currentTime = 39; mSexy.play();
-            const main = document.getElementById('main-content');
-            main.classList.remove('bg-lavie');
-            main.classList.add('bg-sexy');
+            document.getElementById('main-content').className = 'bg-sexy';
             document.getElementById('screen-5').classList.add('screen-hidden');
             document.getElementById('screen-sexy').classList.remove('screen-hidden');
         }
 
         function showFinalScreen() {
             mSexy.pause();
-            // Optional: restart mRomantic or keep it quiet for final message
-            const main = document.getElementById('main-content');
-            main.classList.remove('bg-sexy');
-            main.classList.add('bg-shoulder');
+            mFinal.currentTime = 39; mFinal.play();
+            document.getElementById('main-content').className = 'bg-shoulder';
             document.getElementById('screen-sexy').classList.add('screen-hidden');
             document.getElementById('screen-6').classList.remove('screen-hidden');
         }
 
+        function showDreamScreen() {
+            mFinal.pause();
+            document.getElementById('main-content').classList.add('remove-me');
+            const s7 = document.getElementById('screen-7');
+            s7.classList.remove('remove-me');
+            
+            // Soniyo Music with Fade In
+            mSoniyo.currentTime = 26;
+            mSoniyo.volume = 0;
+            mSoniyo.play();
+            let vol = 0;
+            let fadeIn = setInterval(() => {
+                if (vol < 0.9) { vol += 0.05; mSoniyo.volume = vol; }
+                else { clearInterval(fadeIn); }
+            }, 100); // Fades in over 2 seconds
+        }
+
         function createPetals(targetId) {
-            const target = document.getElementById(targetId) || document.body;
+            const target = document.getElementById(targetId);
             setInterval(() => {
                 const petal = document.createElement('div');
                 petal.className = 'petal';
                 petal.style.left = Math.random() * 100 + 'vw';
                 petal.style.width = Math.random() * 15 + 10 + 'px';
-                petal.style.height = petal.style.width;
                 petal.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
                 target.appendChild(petal);
                 setTimeout(() => petal.remove(), 5000);
